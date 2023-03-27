@@ -1065,15 +1065,15 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Indices of filled bunches&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">)</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">beam_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_beam_current</span>
+<div class="viewcode-block" id="Lattice.get_beam_current"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.get_beam_current">[docs]</a>    <span class="k">def</span> <span class="nf">get_beam_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_beam_current</span></div>
 
-    <span class="nd">@beam_current</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">beam_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">clear_history</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Lattice.set_beam_current"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_beam_current">[docs]</a>    <span class="k">def</span> <span class="nf">set_beam_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">clear_history</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_beam_current</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">if</span> <span class="n">clear_history</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">set_wake_turnhistory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_wake_turnhistory</span><span class="p">()</span></div>
+
+    <span class="n">beam_current</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_beam_current</span><span class="p">,</span> <span class="n">set_beam_current</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bunch_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
