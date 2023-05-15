@@ -967,7 +967,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cell_harmnumber</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;harmonic_number undefined: &#39;</span>
-                                 <span class="s1">&#39;No cavity found in the lattice&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+                                 <span class="s1">&#39;No cavity found in the lattice&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">circumference</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -1118,7 +1118,7 @@
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cell_harmnumber</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;harmonic_number undefined: &#39;</span>
-                                 <span class="s1">&#39;No cavity found in the lattice&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+                                 <span class="s1">&#39;No cavity found in the lattice&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 
     <span class="nd">@harmonic_number</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">harmonic_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
