@@ -523,8 +523,8 @@ modes of linear motion [1]</p></li>
 <a class="reference internal" href="#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a> function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.10.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
-<p><code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> tracks a single particle and computes the tunes with
-NAFF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> tracks a single particle and computes the tunes with
+interpolated FFT.</p>
 </p></li>
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Momentum deviation.</p></li>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening.</p></li>
@@ -538,7 +538,7 @@ otherwise take all cavities.</p></li>
 Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.options.DConstant" title="at.lattice.options.DConstant"><code class="xref py py-data docutils literal notranslate"><span class="pre">DConstant.DPStep</span></code></a></p>
 </dd>
 </dl>
-<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> methods only:</p>
+<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> methods only:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -552,7 +552,7 @@ compute (before mask applied, default: 20)</p></li>
 <li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower tune bound. Default: 0</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper tune bound. Default: 1</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window.
-Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, Work only for <code class="docutils literal notranslate"><span class="pre">'fft'</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -652,8 +652,8 @@ See <a class="reference internal" href="#at.physics.linear.linopt2" title="at.ph
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <p><code class="docutils literal notranslate"><span class="pre">'linopt'</span></code> returns the tunes from the
 <a class="reference internal" href="#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a> function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with fft,</p>
-<p><code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> tracks a single particle and computes the tunes with
-NAFF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> tracks a single particle and computes the tunes with
+interpolated FFT.</p>
 </p></li>
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Momentum deviation.</p></li>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening.</p></li>
@@ -663,7 +663,7 @@ already known ((6,) array)</p></li>
 </ul>
 </dd>
 </dl>
-<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> methods only:</p>
+<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> methods only:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -677,7 +677,7 @@ compute (before mask applied, default: 20)</p></li>
 <li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower tune bound. Default: 0</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper tune bound. Default: 1</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window.
-Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>. Work only for <code class="docutils literal notranslate"><span class="pre">'fft'</span></code></p></li>
 <li><p><strong>get_integer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on integer tune (slower)</p></li>
 </ul>
 </dd>

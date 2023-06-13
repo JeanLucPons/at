@@ -1373,15 +1373,15 @@
 
 <span class="sd">          ``&#39;fft&#39;`` tracks a single particle and computes the tunes with fft,</span>
 
-<span class="sd">          ``&#39;laskar&#39;`` tracks a single particle and computes the tunes with</span>
-<span class="sd">          NAFF.</span>
+<span class="sd">          ``&#39;interp_fft&#39;`` tracks a single particle and computes the tunes with</span>
+<span class="sd">          interpolated FFT.</span>
 <span class="sd">        dp (float):             Momentum deviation.</span>
 <span class="sd">        dct (float):            Path lengthening.</span>
 <span class="sd">        df (float):             Deviation of RF frequency.</span>
 <span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 
-<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;laskar&#39;`` methods only:</span>
+<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;interp_fft&#39;`` methods only:</span>
 
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        nturns (int):           Number of turns. Default: 512</span>
@@ -1394,7 +1394,7 @@
 <span class="sd">        fmin (float):           Lower tune bound. Default: 0</span>
 <span class="sd">        fmax (float):           Upper tune bound. Default: 1</span>
 <span class="sd">        hann (bool):            Turn on Hanning window.</span>
-<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">          Default: :py:obj:`False`. Work only for ``&#39;fft&#39;`` </span>
 <span class="sd">        get_integer(bool):   Turn on integer tune (slower)</span>
 
 <span class="sd">    Returns:</span>
@@ -1448,8 +1448,8 @@
 <span class="sd">          ``&#39;fft&#39;`` tracks a single particle and computes the tunes with</span>
 <span class="sd">          :py:func:`~scipy.fftpack.fft`,</span>
 
-<span class="sd">          ``&#39;laskar&#39;`` tracks a single particle and computes the tunes with</span>
-<span class="sd">          NAFF.</span>
+<span class="sd">          ``&#39;interp_fft&#39;`` tracks a single particle and computes the tunes with</span>
+<span class="sd">          interpolated FFT.</span>
 <span class="sd">        dp (float):         Momentum deviation.</span>
 <span class="sd">        dct (float):        Path lengthening.</span>
 <span class="sd">        df (float):         Deviation of RF frequency.</span>
@@ -1460,7 +1460,7 @@
 <span class="sd">        DPStep (float):     Momentum step for differentiation</span>
 <span class="sd">          Default: :py:data:`DConstant.DPStep &lt;.DConstant&gt;`</span>
 
-<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;laskar&#39;`` methods only:</span>
+<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;interp_fft&#39;`` methods only:</span>
 
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        nturns (int):       Number of turns. Default: 512</span>
@@ -1473,7 +1473,7 @@
 <span class="sd">        fmin (float):       Lower tune bound. Default: 0</span>
 <span class="sd">        fmax (float):       Upper tune bound. Default: 1</span>
 <span class="sd">        hann (bool):        Turn on Hanning window.</span>
-<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">          Default: :py:obj:`False`, Work only for ``&#39;fft&#39;``</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        chromaticities (ndarray):   array([:math:`\xi_x,\xi_y`])</span>

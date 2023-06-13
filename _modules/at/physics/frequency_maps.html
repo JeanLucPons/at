@@ -520,22 +520,22 @@
 
             <span class="c1"># calc frequency from array,</span>
             <span class="c1"># jump the cycle is no frequency is found</span>
-            <span class="n">xfreqfirst</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">xfirst</span><span class="p">,</span> <span class="n">num_harmonics</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">xfreqfirst</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">xfirst</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xfreqfirst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">verboseprint</span><span class="p">(</span><span class="s2">&quot;  No frequency&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
             <span class="c1"># xfreqlast  = PyNAFF.naff(xlastpart,tns,1,0,False)</span>
-            <span class="n">xfreqlast</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">xlast</span><span class="p">,</span> <span class="n">num_harmonics</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">xfreqlast</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">xlast</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xfreqlast</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">verboseprint</span><span class="p">(</span><span class="s2">&quot;  No frequency&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
             <span class="c1"># yfreqfirst = PyNAFF.naff(yfirstpart,tns,1,0,False)</span>
-            <span class="n">yfreqfirst</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">yfirst</span><span class="p">,</span> <span class="n">num_harmonics</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">yfreqfirst</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">yfirst</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yfreqfirst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">verboseprint</span><span class="p">(</span><span class="s2">&quot;  No frequency&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
             <span class="c1"># yfreqlast  = PyNAFF.naff(ylastpart,tns,1,0,False)</span>
-            <span class="n">yfreqlast</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">ylast</span><span class="p">,</span> <span class="n">num_harmonics</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">yfreqlast</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">ylast</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yfreqlast</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">verboseprint</span><span class="p">(</span><span class="s2">&quot;  No frequency&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
