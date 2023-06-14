@@ -303,6 +303,7 @@
 <span class="kn">from</span> <span class="nn">..constants</span> <span class="kn">import</span> <span class="n">clight</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">get_bool_index</span><span class="p">,</span> <span class="n">get_uint32_index</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">get_s_pos</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtError</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">frequency_control</span>
 <span class="kn">from</span> <span class="nn">..tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
 <span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">find_orbit4</span><span class="p">,</span> <span class="n">find_orbit6</span>
@@ -382,11 +383,18 @@
 <span class="k">def</span> <span class="nf">_tunes</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="n">mt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_m66</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="n">mt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_m44</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">vps</span> <span class="o">=</span> <span class="n">a_matrix</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span>
-    <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">vps</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">pi</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">vps</span> <span class="o">=</span> <span class="n">a_matrix</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span>
+        <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">vps</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">pi</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">AtError</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s1">&#39;Unstable ring&#39;</span><span class="p">))</span>
+        <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
+        <span class="n">tunes</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
     <span class="k">return</span> <span class="n">tunes</span>
 
 
