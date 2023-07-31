@@ -478,6 +478,10 @@
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        XYStep (float): Step size.</span>
 <span class="sd">          Default: :py:data:`DConstant.XYStep &lt;.DConstant&gt;`</span>
+<span class="sd">        particle (Particle):    circulating particle.</span>
+<span class="sd">          Default: :code:`lattice.particle` if existing,</span>
+<span class="sd">          otherwise :code:`Particle(&#39;relativistic&#39;)`</span>
+<span class="sd">        energy (float):         lattice energy. Default 0.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        m66:            6x6 transfer matrix</span>
@@ -493,7 +497,7 @@
     <span class="n">dmat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">dg</span><span class="p">,</span> <span class="o">-</span><span class="n">dg</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">in_mat</span> <span class="o">=</span> <span class="n">orbit</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">dmat</span>
-    <span class="n">element_pass</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">)</span>
+    <span class="n">element_pass</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">m66</span> <span class="o">=</span> <span class="p">(</span><span class="n">in_mat</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">in_mat</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">:])</span> <span class="o">/</span> <span class="n">scaling</span>
     <span class="k">return</span> <span class="n">m66</span></div>
 

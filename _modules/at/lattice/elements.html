@@ -1362,6 +1362,26 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">Lmatp</span><span class="o">=</span><span class="n">lmatp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="EnergyLoss"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.EnergyLoss">[docs]</a><span class="k">class</span> <span class="nc">EnergyLoss</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;EnergyLoss&#39;</span><span class="p">]</span>
+    <span class="n">_conversions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Element</span><span class="o">.</span><span class="n">_conversions</span><span class="p">,</span> <span class="n">EnergyLoss</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;EnergyLossRadPass&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">energy_loss</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Energy loss element</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            family_name:    Name of the element</span>
+<span class="sd">            energy_loss:    Energy loss [eV]</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">False</span><span class="p">])</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">EnergyLoss</span><span class="o">=</span><span class="n">energy_loss</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<span class="n">Radiative</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">EnergyLoss</span><span class="p">)</span>
+
+
 <div class="viewcode-block" id="build_class_map"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.build_class_map">[docs]</a><span class="k">def</span> <span class="nf">build_class_map</span><span class="p">():</span>  <span class="c1"># Missing class aliases (Bend)</span>
     <span class="k">global</span> <span class="n">CLASS_MAP</span>
 
