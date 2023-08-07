@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -820,6 +820,48 @@ __eq__ method when comparing lattices.</p>
 <dt class="sig sig-object py" id="at.lattice.elements.Element.swap_faces">
 <span class="sig-name descname"><span class="pre">swap_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.swap_faces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.swap_faces" title="Permalink to this definition">#</a></dt>
 <dd><p>Swap the faces of an element, alignment errors are ignored</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Element.track">
+<span class="sig-name descname"><span class="pre">track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.elements.Element.track" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">element_track()</span></code> tracks particles through one element of a
+calling the element-specific tracking function specified in the
+Element’s <em>PassMethod</em> field</p>
+<dl>
+<dt>Usage:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">element_track</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">r_in</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">element</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">r_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a>) – element to track through</p></li>
+<li><p><strong>r_in</strong> – (6, N) array: input coordinates of N particles.
+For the best efficiency, <em>r_in</em>
+should be given as F_CONTIGUOUS numpy array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
+reports the coordinates at the end of the element.
+(default: False)</p></li>
+<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of OpenMP threads
+(default: automatic)</p></li>
+<li><p><strong>particle</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a><em>]</em>) – circulating particle.
+Default: <code class="code docutils literal notranslate"><span class="pre">lattice.particle</span></code> if existing,
+otherwise <code class="code docutils literal notranslate"><span class="pre">Particle('relativistic')</span></code></p></li>
+<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>r_out</strong> – (6, N, R, T) array containing output coordinates of N particles
+at R reference points for T turns</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1599,6 +1641,15 @@ array-like object</p></li>
      <code class="docutils literal notranslate">
       <span class="pre">
        Element.swap_faces()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.track">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.track()
       </span>
      </code>
     </a>

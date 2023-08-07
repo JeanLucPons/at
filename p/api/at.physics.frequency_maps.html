@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -435,7 +435,7 @@ initial particle offset of every particle. Otherwise, one could set
 Additionally, a numpy array (<em>add_offset6D</em>) with 6 values could be used to
 arbitrarily offset the initial coordinates of every particle.</p>
 <p>A dictionary with particle losses is saved for every vertical offset.
-See the <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> documentation.</p>
+See the <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> documentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -453,7 +453,7 @@ the coordinates</p></li>
 </dd>
 </dl>
 <dl class="simple">
-<dt>Optional:</dt><dd><p>pool_size:number of processes. See <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a></p>
+<dt>Optional:</dt><dd><p>pool_size:number of processes. See <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a></p>
 </dd>
 </dl>
 <dl class="field-list simple">
@@ -464,7 +464,7 @@ the coordinates</p></li>
 log10(sqrt(sum(dnu**2)/turns)) ]</cite></p></li>
 <li><p><strong>loss_map_array</strong> – experimental format.
 if <em>loss_map</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, it returns the losses dictionary
-provided by <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> per every vertical offset.
+provided by <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> per every vertical offset.
 if <em>loss_map</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, it returns a one-element list.</p></li>
 </ul>
 </dd>
