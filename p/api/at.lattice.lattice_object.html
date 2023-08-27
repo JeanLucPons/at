@@ -4068,8 +4068,8 @@ size is specified. Default: no slicing</p></li>
 <span class="sig-name descname"><span class="pre">tapering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">multipoles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.tapering" title="Permalink to this definition">#</a></dt>
 <dd><p>Scales magnet strengths</p>
 <p>Scales magnet strengths with local energy to cancel the closed orbit
-and optics errors due to synchrotron radiations. PolynomB is used for
-dipoles such that the machine geometry is maintained. This is the ideal
+and optics errors due to synchrotron radiations. The dipole bending angle
+is changed by changing the reference momentum. This is the ideal
 tapering scheme where magnets and multipoles components (PolynomB and
 PolynomA) are scaled individually.</p>
 <div class="admonition warning">
