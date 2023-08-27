@@ -498,8 +498,8 @@
 <div class="viewcode-block" id="Collective"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Collective">[docs]</a><span class="k">class</span> <span class="nc">Collective</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixin class for elements representing collective effects</span>
 
-<span class="sd">    Derived classes will automatically set the :py:attr:`~Element.is_collective`</span>
-<span class="sd">    property when the element is active.</span>
+<span class="sd">    Derived classes will automatically set the</span>
+<span class="sd">    :py:attr:`~Element.is_collective` property when the element is active.</span>
 
 <span class="sd">    The class must have a ``default_pass`` class attribute, a dictionary such</span>
 <span class="sd">    that:</span>
@@ -523,7 +523,7 @@
     <span class="k">def</span> <span class="nf">_get_collective</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># noinspection PyUnresolvedReferences</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span>
-        
+
 <div class="viewcode-block" id="Collective.clear_history"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Collective.clear_history">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">clear_history</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div></div>
@@ -623,7 +623,7 @@
             <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">attri</span><span class="p">)</span>
             <span class="nb">delattr</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">attri</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">attro</span><span class="p">,</span> <span class="n">val</span>
-        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
             <span class="n">el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">el</span> <span class="o">=</span> <span class="bp">self</span>
@@ -775,14 +775,14 @@
 <div class="viewcode-block" id="BeamMoments.set_buffers"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.BeamMoments.set_buffers">[docs]</a>    <span class="k">def</span> <span class="nf">set_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">,</span> <span class="n">nturns</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_means</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">,</span> <span class="n">nturns</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span></div>
-        
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span>
-        
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">means</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_means</span>    </div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_means</span></div>
 
 
 <div class="viewcode-block" id="Aperture"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Aperture">[docs]</a><span class="k">class</span> <span class="nc">Aperture</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
@@ -1276,6 +1276,70 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">M66</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">M66</span><span class="o">=</span><span class="n">m66</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="SimpleQuantDiff"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SimpleQuantDiff">[docs]</a><span class="k">class</span> <span class="nc">SimpleQuantDiff</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Linear tracking element for a simplified quantum diffusion,</span>
+<span class="sd">    radiation damping and energy loss</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
+    <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;SimpleQuantDiffPass&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">beta_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">beta_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">emit_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">emit_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sigma_dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">tau_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">tau_z</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">U0</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            family_name:    Name of the element</span>
+<span class="sd">            </span>
+<span class="sd">        Optional Args:</span>
+<span class="sd">            beta_x:         Horizontal beta function at element [m]</span>
+<span class="sd">            beta_y:         Vertical beta function at element [m]</span>
+<span class="sd">            emit_x:         Horizontal equilibrium emittance [m.rad]</span>
+<span class="sd">            emit_y:         Vertical equilibrium emittance [m.rad]</span>
+<span class="sd">            sigma_dp:       Equilibrium energy spread</span>
+<span class="sd">            tau_x:          Horizontal damping time [turns]</span>
+<span class="sd">            tau_y:          Vertical damping time [turns]</span>
+<span class="sd">            tau_z:          Longitudinal damping time [turns]</span>
+<span class="sd">            U0:             Energy Loss [eV]</span>
+<span class="sd">            </span>
+<span class="sd">        Default PassMethod: ``SimpleQuantDiffPass``</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
+       
+        <span class="k">assert</span> <span class="n">tau_x</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tau_x must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tau_x</span> <span class="o">=</span> <span class="n">tau_x</span>
+            
+        <span class="k">assert</span> <span class="n">tau_y</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tau_y must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tau_y</span> <span class="o">=</span> <span class="n">tau_y</span>
+
+        <span class="k">assert</span> <span class="n">tau_z</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tau_z must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tau_z</span> <span class="o">=</span> <span class="n">tau_z</span>
+
+        <span class="k">assert</span> <span class="n">emit_x</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emit_x must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit_x</span> <span class="o">=</span> <span class="n">emit_x</span>
+        <span class="k">if</span> <span class="n">emit_x</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">tau_x</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emit_x is given, tau_x must be non zero&#39;</span>
+            
+        <span class="k">assert</span> <span class="n">emit_y</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emit_x must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit_y</span> <span class="o">=</span> <span class="n">emit_y</span>
+        <span class="k">if</span> <span class="n">emit_y</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">tau_y</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emit_y is given, tau_y must be non zero&#39;</span>
+            
+        <span class="k">assert</span> <span class="n">sigma_dp</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;sigma_dp must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_dp</span> <span class="o">=</span> <span class="n">sigma_dp</span>
+        <span class="k">if</span> <span class="n">sigma_dp</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">tau_z</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if sigma_dp is given, tau_z must be non zero&#39;</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">U0</span> <span class="o">=</span> <span class="n">U0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_x</span> <span class="o">=</span> <span class="n">beta_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_y</span> <span class="o">=</span> <span class="n">beta_y</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
 <div class="viewcode-block" id="Corrector"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Corrector">[docs]</a><span class="k">class</span> <span class="nc">Corrector</span><span class="p">(</span><span class="n">LongElement</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Corrector element&quot;&quot;&quot;</span>
     <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">LongElement</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;KickAngle&#39;</span><span class="p">]</span>
@@ -1392,7 +1456,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">False</span><span class="p">])</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">EnergyLoss</span><span class="o">=</span><span class="n">energy_loss</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
 
 <span class="n">Radiative</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">EnergyLoss</span><span class="p">)</span>
 
