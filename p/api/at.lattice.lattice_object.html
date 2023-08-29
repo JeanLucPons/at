@@ -3260,7 +3260,7 @@ Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’</em>,
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>acceptance</strong> (<em>Tuple</em><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em>) – Tuple containing
+<li><p><strong>acceptance</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em>) – tuple containing
 pre-computed acceptance <em>(boundary, survived, grid)</em></p></li>
 <li><p><strong>npoints</strong> – (len(planes),) array: number of points in each
 dimension</p></li>
@@ -3302,7 +3302,7 @@ enabled, <em>grid_mode</em> is forced to <a class="reference internal" href="at.
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> uses the python default that is considered safe.
 Available parameters: <em>‘fork’</em>, <em>‘spawn’</em>, <em>‘forkserver’</em>.
 The default for linux is <em>‘fork’</em>, the default for macOS and
-Windows is <em>‘spawn’</em>. <em>‘fork’</em> may used for macOS to speed up
+Windows is <em>‘spawn’</em>. <em>‘fork’</em> may be used for macOS to speed up
 the calculation or to solve runtime errors, however  it is
 considered unsafe.</p></li>
 </ul>
@@ -3385,7 +3385,7 @@ for details</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
-<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – x,y,angle at starting point</p></li>
+<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – x,y,angle at starting point</p></li>
 <li><p><strong>centered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – it True the coordinates origin is the center of the ring</p></li>
 <li><p><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.2)"><em>Axes</em></a><em>]</em>) – axes for the plot. If not given, new axes are created</p></li>
 </ul>
