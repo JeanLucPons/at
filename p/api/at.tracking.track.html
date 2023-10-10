@@ -549,23 +549,60 @@ Default: <a class="reference external" href="https://docs.python.org/3/library/c
 <li><p><strong>r_out</strong> – (6, N, R, T) array containing output coordinates of N particles
 at R reference points for T turns</p></li>
 <li><p><strong>trackparam</strong> – A dictionary containing tracking input parameters with the
-following keys:</p></li>
+following keys:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>npart</strong></p></td>
+<td><p>number of particles</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>rout</strong></p></td>
+<td><p>final particle coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>turn</strong></p></td>
+<td><p>starting turn</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>refpts</strong></p></td>
+<td><p>array of index where particle coordinate are saved
+(only for lattice tracking)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nturns</strong></p></td>
+<td><p>number of turn</p></td>
+</tr>
+</tbody>
+</table>
+</li>
 <li><p><strong>trackdata</strong> – A dictionary containinf tracking data with the following
-keys:</p></li>
-<li><p><strong>The **loss_map</strong> is filled only if <em>losses</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>,** – it contains the following keys:
-==============    ===================================================
-<strong>islost</strong>        (npart,) bool array indicating lost particles
-<strong>turn</strong>          (npart,) int array indicating the turn at</p>
-<blockquote>
-<div><p>which the particle is lost</p>
-</div></blockquote>
-<dl class="simple">
-<dt><strong>element</strong>       ((npart,) int array indicating the element at</dt><dd><p>which the particle is lost</p>
-</dd>
-<dt><strong>coord</strong>         (npart, 6) float array giving the coordinates at</dt><dd><p>which the particle is lost (zero for surviving
-particles)</p>
-</dd>
-</dl>
+keys:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>loss_map</strong>:</p></td>
+<td><p>recarray containing the loss_map (only for lattice
+tracking)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>loss_map</strong> is filled only if <em>losses</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>,
+it contains the following keys:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>islost</strong></p></td>
+<td><p>(npart,) bool array indicating lost particles</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>turn</strong></p></td>
+<td><p>(npart,) int array indicating the turn at
+which the particle is lost</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>element</strong></p></td>
+<td><p>(npart,) int array indicating the element at
+which the particle is lost</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>coord</strong></p></td>
+<td><p>(npart, 6) float array giving the coordinates at
+which the particle is lost (zero for surviving
+particles)</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </dd>
