@@ -523,6 +523,18 @@ compute the absolute path length used in RFCavityPass.</p></li>
 <li><p><strong>losses</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Boolean to activate loss maps output</p></li>
 <li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of OpenMP threads
 (default: automatic)</p></li>
+<li><p><strong>pool_size</strong> – number of processes used when
+<em>use_mp</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. If None, <code class="docutils literal notranslate"><span class="pre">min(npart,nproc)</span></code>
+is used. It can be globally set using the variable
+<em>at.lattice.DConstant.patpass_poolsize</em></p></li>
+<li><p><strong>start_method</strong> – python multiprocessing start method.
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> uses the python default that is considered safe.
+Available values: <code class="docutils literal notranslate"><span class="pre">'fork'</span></code>, <code class="docutils literal notranslate"><span class="pre">'spawn'</span></code>, <code class="docutils literal notranslate"><span class="pre">'forkserver'</span></code>.
+Default for linux is <code class="docutils literal notranslate"><span class="pre">'fork'</span></code>, default for macOS and  Windows is
+<code class="docutils literal notranslate"><span class="pre">'spawn'</span></code>. <code class="docutils literal notranslate"><span class="pre">'fork'</span></code> may be used on macOS to speed up the
+calculation or to solve Runtime Errors, however it is considered
+unsafe. Used only when <em>use_mp</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. It can be globally
+set using the variable <em>at.lattice.DConstant.patpass_startmethod</em></p></li>
 </ul>
 </dd>
 </dl>
@@ -571,7 +583,7 @@ following keys:</p>
 </tbody>
 </table>
 </li>
-<li><p><strong>trackdata</strong> – A dictionary containinf tracking data with the following
+<li><p><strong>trackdata</strong> – A dictionary containing tracking data with the following
 keys:</p>
 <table class="table">
 <tbody>
