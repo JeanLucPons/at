@@ -654,8 +654,8 @@ modes of linear motion [1]</p></li>
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
 <li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, allow <em>len(ring)</em> as a
 special index, referring to the end of the last element.</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1514,8 +1514,8 @@ This behavior can be changed by setting
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
 <li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, allow <em>len(ring)</em> as a
 special index, referring to the end of the last element.</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1682,8 +1682,8 @@ Default: <a class="reference external" href="https://docs.python.org/3/library/c
 <li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
 <li><p><strong>refpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.12)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.12)"><em>Type</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><em>RefptsCode</em><em>]</em>) – Element selection key.
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1712,21 +1712,32 @@ See <code class="xref py py-class docutils literal notranslate"><span class="pre
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.get_geometry">
-<span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_geometry" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RefptsCode.All</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_geometry" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the 2D ring geometry in cartesian coordinates</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
-<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.12)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – x ,y, angle at starting point</p></li>
+<li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description.</p></li>
+<li><p><strong>refpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.12)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.12)"><em>Type</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><em>RefptsCode</em><em>]</em>) – Element selection key.
+See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
+<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.12)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – <em>x</em>, <em>y</em>, <em>angle</em> at starting point. <em>x</em> and <em>y</em> are
+ignored if <em>centered</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
 <li><p><strong>centered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> the coordinates origin is the
-center of the ring</p></li>
+center of the ring.</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>geomdata</strong> – recarray containing, x, y, angle</p></li>
-<li><p><strong>radius</strong> – machine radius</p></li>
+<dd class="field-even"><ul>
+<li><p><strong>geomdata</strong> – recarray containing, x, y, angle.</p></li>
+<li><p><strong>radius</strong> – machine radius at the beginning of the lattice.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This radius is different from the radius usually defined as
+<span class="math notranslate nohighlight">\(C/2\pi\)</span></p>
+</div>
+</li>
 </ul>
 </dd>
 </dl>
@@ -2195,8 +2206,8 @@ with the lowest frequency.</p>
 <li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
 <li><p><strong>refpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.12)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.12)"><em>Type</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><em>RefptsCode</em><em>]</em>) – Element selection key.
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2342,8 +2353,8 @@ Default: <a class="reference external" href="https://docs.python.org/3/library/c
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
 <li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, allow <em>len(ring)</em> as a
 special index, referring to the end of the last element.</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2385,13 +2396,9 @@ attribute</p>
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
 <li><p><strong>attrname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Attribute name</p></li>
 <li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – index of the value to retrieve if <em>attrname</em> is
-an array.</p></li>
-<li><p><strong>regex</strong> – <dl class="simple">
-<dt>Use regular expression for refpts string matching;</dt><dd><p>Default: False (Unix shell-style wildcards)</p>
-</dd>
-</dl>
-<p>If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> the full array is retrieved</p>
-</p></li>
+an array. If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> the full array is retrieved</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3601,8 +3608,8 @@ and <a class="reference internal" href="at.lattice.elements.html#at.lattice.elem
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
 <li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, allow <em>len(ring)</em> as a
 special index, referring to the end of the last element.</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3761,8 +3768,8 @@ duplicated as necessary). Default: Marker(‘sbreak’)</p></li>
 <li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
 <li><p><strong>refpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.12)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.12)"><em>Type</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em><em>, </em><em>RefptsCode</em><em>]</em>) – Element selection key.
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3986,21 +3993,17 @@ See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span c
 <li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – index of the value to set if <em>attrname</em> is
 an array. if <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, the full array is replaced by
 <em>attrvalue</em></p></li>
-<li><p><strong>increment</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em>) – Add values to the initial values.</p></li>
-<li><p><strong>regex</strong> – <dl class="simple">
-<dt>Use regular expression for refpts string matching;</dt><dd><p>Default: False (Unix shell-style wildcards)</p>
-</dd>
-</dl>
-<p>If <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> the initial value is replaced (Default)</p>
-</p></li>
-<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>]</em>) – <p>If <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, the modification is done in-place,</p>
+<li><p><strong>increment</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, <em>attrvalues</em> are added to the initial values.</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
+<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <p>If <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, the modification is done in-place,</p>
 <p>If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, return a shallow copy of the lattice. Only the
 modified elements are copied.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>a shallow copy means that all non-modified
 elements are shared with the original lattice.
-Any further modification will affect in both lattices.</p>
+Any further modification will affect both lattices.</p>
 </div>
 </p></li>
 </ul>
@@ -4265,8 +4268,8 @@ bunches defined by <code class="code docutils literal notranslate"><span class="
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
 <li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, allow <em>len(ring)</em> as a
 special index, referring to the end of the last element.</p></li>
-<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
-Default: False (Unix shell-style wildcards)</p></li>
+<li><p><strong>regex</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use regular expression for <em>refpts</em> string matching instead of
+Unix shell-style wildcards.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
