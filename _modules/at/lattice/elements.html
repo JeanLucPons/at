@@ -113,6 +113,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -122,13 +129,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -210,6 +210,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -219,13 +226,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -1070,7 +1070,11 @@
 <span class="sd">            KickAngle:          Correction deviation angles (H, V)</span>
 <span class="sd">            FieldScaling:       Scaling factor applied to the magnetic field</span>
 
-<span class="sd">        Default PassMethod: ``BndMPoleSymplectic4Pass``</span>
+<span class="sd">        Available PassMethods: :ref:`BndMPoleSymplectic4Pass`, :ref:`BendLinearPass`,</span>
+<span class="sd">        :ref:`ExactSectorBendPass`, :ref:`ExactRectangularBendPass`,</span>
+<span class="sd">        :ref:`ExactRectBendPass`, BndStrMPoleSymplectic4Pass</span>
+
+<span class="sd">        Default PassMethod: :ref:`BndMPoleSymplectic4Pass`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">poly_b</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;PolynomB&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">]))</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;BendingAngle&#39;</span><span class="p">,</span> <span class="n">bending_angle</span><span class="p">)</span>
