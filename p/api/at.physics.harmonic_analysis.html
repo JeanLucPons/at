@@ -405,17 +405,19 @@ Github: <a class="github reference external" href="https://github.com/pylhc/harp
 <td><p>Frequency analysis of beam motion</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.get_main_harmonic" title="at.physics.harmonic_analysis.get_main_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_main_harmonic</span></code></a>(cents[, method, hann, ...])</p></td>
-<td><p>Computes tunes, amplitudes and pahses from harmonic analysis</p></td>
+<td><p>Computes tunes, amplitudes and phases from harmonic analysis The tune is defined as the harmonic with the maximum amplitude within the search range.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="at.physics.harmonic_analysis.get_tunes_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tunes_harmonic</span></code></a>(cents[, method, hann, ...])</p></td>
-<td><p>Computes tunes from harmonic analysis</p></td>
+<td><p>Computes tunes from harmonic analysis.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.harmonic_analysis.get_main_harmonic">
-<span class="sig-name descname"><span class="pre">get_main_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_main_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_main_harmonic" title="Permalink to this definition">#</a></dt>
-<dd><p>Computes tunes, amplitudes and pahses from harmonic analysis</p>
+<span class="sig-name descname"><span class="pre">get_main_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_main_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_main_harmonic" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes tunes, amplitudes and phases from harmonic analysis
+The tune is defined as the harmonic with the maximum amplitude
+within the search range.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -424,12 +426,23 @@ Github: <a class="github reference external" href="https://github.com/pylhc/harp
 Default: <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code></p></li>
 <li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Lower bound for tune search</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Upper bound for tune search</p></li>
+<li><p><strong>num_harmonics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of harmonics to search for.
+Default=1.</p></li>
 <li><p><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Maximum number of iterations for the search</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.
 Ignored for interpolated FFT</p></li>
 <li><p><strong>pad_length</strong> – Zero pad the input signal.
 Rounded to the higher power of 2
 Ignored for interpolated FFT</p></li>
+<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Flag to activate multiprocessing (default: False)</p></li>
+<li><p><strong>pool_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – number of processes used when
+<em>use_mp</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. If None, <code class="docutils literal notranslate"><span class="pre">min(npart,nproc)</span></code>
+is used. It can be globally set using the variable
+<em>at.lattice.DConstant.patpass_poolsize</em></p></li>
+<li><p><strong>start_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Python multiprocessing start method. Default None
+uses the OS default method.</p></li>
+<li><p><strong>remove_mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Remove the mean of the input signal.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -443,11 +456,26 @@ corresponding to the tune</p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The tune is defined as the harmonic with the maximum amplitude within
+the search range <code class="docutils literal notranslate"><span class="pre">(fmin,</span> <span class="pre">fmax)</span></code>.</p></li>
+<li><p>In case a <code class="docutils literal notranslate"><span class="pre">Nan</span></code> is present in the input vector or the tune cannot
+be found within the range, the function returns <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
+<li><p>For the method <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code>, harmonics are calculated iteratively
+starting from the maximum peak of the raw FFT. <code class="docutils literal notranslate"><span class="pre">num_harmonics=1</span></code>
+is the default, only the first harmonic is calculated.
+However, it is possible that the maximum of the interpolated
+FFT does not correspond to the maximum of the raw FFT, in which case
+<code class="docutils literal notranslate"><span class="pre">num_harmonics</span></code> has to be increased to get the correct peak.</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.harmonic_analysis.get_spectrum_harmonic">
-<span class="sig-name descname"><span class="pre">get_spectrum_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_spectrum_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_spectrum_harmonic" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_spectrum_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_spectrum_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_spectrum_harmonic" title="Permalink to this definition">#</a></dt>
 <dd><p>Frequency analysis of beam motion</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -464,6 +492,8 @@ number of iteration for the search</p></li>
 Ignored for interpolated FFT</p></li>
 <li><p><strong>signal.</strong> (<em>pad_length      Zero pad the input</em>) – Rounded to the higher power of 2
 Ignored for interpolated FFT</p></li>
+<li><p><strong>remove_mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Remove the mean of the input signal.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -478,8 +508,8 @@ Ignored for interpolated FFT</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.harmonic_analysis.get_tunes_harmonic">
-<span class="sig-name descname"><span class="pre">get_tunes_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_tunes_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="Permalink to this definition">#</a></dt>
-<dd><p>Computes tunes from harmonic analysis</p>
+<span class="sig-name descname"><span class="pre">get_tunes_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_tunes_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes tunes from harmonic analysis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -488,12 +518,23 @@ Ignored for interpolated FFT</p></li>
 Default: <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code></p></li>
 <li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Lower bound for tune search</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Upper bound for tune search</p></li>
+<li><p><strong>num_harmonics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of harmonics to search for.
+Default=1.</p></li>
 <li><p><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Maximum number of iterations for the search</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.
-Ignored for interpolated FFT</p></li>
+Ignored for interpolated FFT.</p></li>
 <li><p><strong>pad_length</strong> – Zero pad the input signal.
 Rounded to the higher power of 2
 Ignored for interpolated FFT</p></li>
+<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Flag to activate multiprocessing (default: False)</p></li>
+<li><p><strong>pool_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – number of processes used when
+<em>use_mp</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. If None, <code class="docutils literal notranslate"><span class="pre">min(npart,nproc)</span></code>
+is used. It can be globally set using the variable
+<em>at.lattice.DConstant.patpass_poolsize</em></p></li>
+<li><p><strong>start_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Python multiprocessing start method. Default None
+uses the OS default method.</p></li>
+<li><p><strong>remove_mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Remove the mean of the input signal.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -503,6 +544,21 @@ Ignored for interpolated FFT</p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The tune is defined as the harmonic with the maximum amplitude within
+the search range <code class="docutils literal notranslate"><span class="pre">(fmin,</span> <span class="pre">fmax)</span></code>.</p></li>
+<li><p>In case a <code class="docutils literal notranslate"><span class="pre">Nan</span></code> is present in the input vector or the tune cannot
+be found within the range, the function returns <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
+<li><p>For the method <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code>, harmonics are calculated iteratively
+starting from the maximum peak of the raw FFT. <code class="docutils literal notranslate"><span class="pre">num_harmonics=1</span></code>
+is the default, only the first harmonic is calculated.
+However, it is possible that the maximum of the interpolated
+FFT does not correspond to the maximum of the raw FFT, in which case
+<code class="docutils literal notranslate"><span class="pre">num_harmonics</span></code> has to be increased to get the correct peak.</p></li>
+</ul>
+</div>
 </dd></dl>
 
 </section>
