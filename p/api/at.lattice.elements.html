@@ -482,10 +482,13 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.SimpleQuantDiff" title="at.lattice.elements.SimpleQuantDiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleQuantDiff</span></code></a>(family_name[, betax, betay, ...])</p></td>
 <td><p>Linear tracking element for a simplified quantum diffusion, radiation damping and energy loss</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.SliceMoments" title="at.lattice.elements.SliceMoments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SliceMoments</span></code></a>(family_name, nslice, **kwargs)</p></td>
+<td><p>Element to compute slices mean and std</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
 <td><p>Thin multipole element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wiggler</span></code></a>(family_name, length, wiggle_period, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wiggler</span></code></a>(family_name, length, wiggle_period, ...)</p></td>
 <td><p>Wiggler element</p></td>
 </tr>
 </tbody>
@@ -517,7 +520,7 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Name of the element</p>
 </dd>
 </dl>
-<p>All keywords will be set as attributes of the element</p>
+<p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">BeamMomentsPass</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.BeamMoments.set_buffers">
 <span class="sig-name descname"><span class="pre">set_buffers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nturns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbunch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#BeamMoments.set_buffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.BeamMoments.set_buffers" title="Permalink to this definition">#</a></dt>
@@ -526,12 +529,14 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="at.lattice.elements.BeamMoments.means">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">means</span></span><a class="headerlink" href="#at.lattice.elements.BeamMoments.means" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Beam 6d center of mass</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="at.lattice.elements.BeamMoments.stds">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stds</span></span><a class="headerlink" href="#at.lattice.elements.BeamMoments.stds" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Beam 6d standard deviation</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -655,8 +660,11 @@ handled</p>
 </ul>
 </dd>
 </dl>
-<p>Available PassMethods: <a class="reference internal" href="../../common/sa_passmethods.html#bndmpolesymplectic4pass"><span class="std std-ref">BndMPoleSymplectic4Pass</span></a>, <a class="reference internal" href="../../common/sa_passmethods.html#bendlinearpass"><span class="std std-ref">BendLinearPass</span></a>,
-<a class="reference internal" href="../../common/ex_passmethods.html#exactsectorbendpass"><span class="std std-ref">ExactSectorBendPass</span></a>, <a class="reference internal" href="../../common/ex_passmethods.html#exactrectangularbendpass"><span class="std std-ref">ExactRectangularBendPass</span></a>,
+<dl class="simple">
+<dt>Available PassMethods: <a class="reference internal" href="../../common/sa_passmethods.html#bndmpolesymplectic4pass"><span class="std std-ref">BndMPoleSymplectic4Pass</span></a>,</dt><dd><p><a class="reference internal" href="../../common/sa_passmethods.html#bendlinearpass"><span class="std std-ref">BendLinearPass</span></a>,</p>
+</dd>
+</dl>
+<p><a class="reference internal" href="../../common/ex_passmethods.html#exactsectorbendpass"><span class="std std-ref">ExactSectorBendPass</span></a>, <a class="reference internal" href="../../common/ex_passmethods.html#exactrectangularbendpass"><span class="std std-ref">ExactRectangularBendPass</span></a>,
 <a class="reference internal" href="../../common/ex_passmethods.html#exactrectbendpass"><span class="std std-ref">ExactRectBendPass</span></a>, BndStrMPoleSymplectic4Pass</p>
 <p>Default PassMethod: <a class="reference internal" href="../../common/sa_passmethods.html#bndmpolesymplectic4pass"><span class="std std-ref">BndMPoleSymplectic4Pass</span></a></p>
 <dl class="py method">
@@ -1376,6 +1384,71 @@ U0:             Energy Loss [eV]</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SliceMoments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nslice</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SliceMoments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SliceMoments" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Element to compute slices mean and std</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of slices</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>startturn</strong> – Start turn of the acquisition (Default 0)</p></li>
+<li><p><strong>endturn</strong> – End turn of the acquisition (Default 1)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">SliceMomentsPass</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.set_buffers">
+<span class="sig-name descname"><span class="pre">set_buffers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nturns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbunch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SliceMoments.set_buffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SliceMoments.set_buffers" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.endturn">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">endturn</span></span><a class="headerlink" href="#at.lattice.elements.SliceMoments.endturn" title="Permalink to this definition">#</a></dt>
+<dd><p>End turn of the acquisition</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.means">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">means</span></span><a class="headerlink" href="#at.lattice.elements.SliceMoments.means" title="Permalink to this definition">#</a></dt>
+<dd><p>Slices x,y,dp center of mass</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.spos">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spos</span></span><a class="headerlink" href="#at.lattice.elements.SliceMoments.spos" title="Permalink to this definition">#</a></dt>
+<dd><p>Slices s position</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.startturn">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">startturn</span></span><a class="headerlink" href="#at.lattice.elements.SliceMoments.startturn" title="Permalink to this definition">#</a></dt>
+<dd><p>Start turn of the acquisition</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.stds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stds</span></span><a class="headerlink" href="#at.lattice.elements.SliceMoments.stds" title="Permalink to this definition">#</a></dt>
+<dd><p>Slices x,y,dp standard deviation</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.SliceMoments.weights">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weights</span></span><a class="headerlink" href="#at.lattice.elements.SliceMoments.weights" title="Permalink to this definition">#</a></dt>
+<dd><p>Slices weights in mA if beam current &gt;0,
+otherwise fraction of total number of
+particles in the bunch</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.ThinMultipole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThinMultipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#ThinMultipole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.ThinMultipole" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
@@ -2066,6 +2139,80 @@ array-like object</p></li>
      <code class="docutils literal notranslate">
       <span class="pre">
        SimpleQuantDiff.default_pass
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SliceMoments
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.set_buffers">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.set_buffers()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.endturn">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.endturn
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.means">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.means
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.spos">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.spos
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.startturn">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.startturn
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.stds">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.stds
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SliceMoments.weights">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SliceMoments.weights
       </span>
      </code>
     </a>
