@@ -340,6 +340,8 @@
 <span class="sd">        copy:       If True, returns a shallow copy of ring with new</span>
 <span class="sd">                    beam loading elements. Otherwise, modify ring in-place</span>
 <span class="sd">        cavitymode (CavityMode):     Define PASSIVE or ACTIVE cavity</span>
+<span class="sd">        buffersize (int):  Size of the history buffer for vbeam, vgen, vbunch</span>
+<span class="sd">                (default 0)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">newelems</span><span class="p">):</span>
@@ -412,18 +414,18 @@
                         <span class="n">PhaseGain</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">VoltGain</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_blmode</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
                         <span class="n">_beta</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_wakefact</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_nslice</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
                         <span class="n">ZCuts</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">_cavitymode</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-                        <span class="n">_nturns</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">_phis</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">_nturns</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">_phis</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_buffersize</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
                         <span class="n">_vbeam_phasor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
                         <span class="n">_vbeam</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
                         <span class="n">_vcav</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
-                        <span class="n">_vgen</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
+                        <span class="n">_vgen</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
                         <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">voltage</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                  <span class="n">frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                  <span class="n">rshunt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">blmode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BLMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLMode</span><span class="o">.</span><span class="n">PHASOR</span><span class="p">,</span>
                  <span class="n">cavitymode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CavityMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">CavityMode</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">,</span>
-                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                 <span class="n">buffersize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters:</span>
 <span class="sd">            ring:            Lattice object</span>
@@ -443,6 +445,8 @@
 <span class="sd">                function. For high Q resonator, the phasor method should be</span>
 <span class="sd">                used</span>
 <span class="sd">            cavitymode (CavityMode):  Is cavity ACTIVE (default) or PASSIVE</span>
+<span class="sd">            buffersize (int):  Size of the history buffer for vbeam, vgen, vbunch</span>
+<span class="sd">                (default 0)</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            bl_elem (Element): beam loading element</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -472,6 +476,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">nbunch</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Defined here to avoid warning</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span> <span class="o">=</span> <span class="n">buffersize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vgen_buffer</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam_buffer</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch_buffer</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">zcuts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ZCuts</span> <span class="o">=</span> <span class="n">zcuts</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BeamLoadingElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span>
@@ -486,7 +494,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_vcav</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">Voltage</span><span class="p">,</span>
                                   <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_phis</span><span class="o">-</span><span class="n">phil</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">(</span><span class="n">ring</span><span class="o">=</span><span class="n">ring</span><span class="p">)</span>
-
+        
 <div class="viewcode-block" id="BeamLoadingElement.is_compatible"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.is_compatible">[docs]</a>    <span class="k">def</span> <span class="nf">is_compatible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -498,7 +506,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nbunch</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_init_bl_params</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
         <span class="n">tl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tl</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tl</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vgen_buffer</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span><span class="p">),</span>
+                                            <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam_buffer</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span><span class="p">),</span>
+                                             <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch_buffer</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span><span class="p">),</span>
+                                              <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_init_bl_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cavitymode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">current</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">):</span>
@@ -519,6 +534,30 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">current</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Rshunt</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span>
                                    <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">-</span><span class="n">psi</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_vgen</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">vgen</span><span class="p">,</span> <span class="n">psi</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Buffersize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span>
+
+    <span class="nd">@Buffersize</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">Buffersize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffersize</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">()</span>    
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vgen_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stored generator voltage data&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vgen_buffer</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vbeam_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stored beam induced voltage data&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam_buffer</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vbunch_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stored bunch induced voltage data&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vbunch_buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>    
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">Nslice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -579,7 +618,7 @@
                        <span class="n">qfactor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                        <span class="n">blmode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BLMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLMode</span><span class="o">.</span><span class="n">PHASOR</span><span class="p">,</span>
                        <span class="n">cavitymode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CavityMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">CavityMode</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">,</span>
-                       <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                       <span class="n">buffersize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function to build the BeamLoadingElement from a cavity</span>
 <span class="sd">        the FamName, Length, Voltage, Frequency and HarmNumber are</span>
 <span class="sd">        taken from the cavity element</span>
@@ -601,6 +640,9 @@
 <span class="sd">            cavitymode (CavityMode):  type of beam loaded cavity ACTIVE</span>
 <span class="sd">                (default) for a cavity with active compensation, or</span>
 <span class="sd">                PASSIVE to only include the beam induced voltage</span>
+<span class="sd">            buffersize (int):  Size of the history buffer for vbeam, vgen, vbunch</span>
+<span class="sd">                (default 0)</span>
+<span class="sd">                </span>
 <span class="sd">        Returns:</span>
 <span class="sd">            bl_elem (Element): beam loading element</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -618,6 +660,7 @@
         <span class="k">return</span> <span class="n">BeamLoadingElement</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">*</span><span class="n">cav_args</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span>
                                   <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">blmode</span><span class="o">=</span><span class="n">blmode</span><span class="p">,</span>
                                   <span class="n">cavitymode</span><span class="o">=</span><span class="n">cavitymode</span><span class="p">,</span>
+                                  <span class="n">buffersize</span><span class="o">=</span><span class="n">buffersize</span><span class="p">,</span>
                                   <span class="o">**</span><span class="n">cav_attrs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
