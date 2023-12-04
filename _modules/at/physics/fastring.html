@@ -298,7 +298,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">RFCavity</span><span class="p">,</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">get_cells</span><span class="p">,</span> <span class="n">checkname</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">get_elements</span><span class="p">,</span> <span class="n">M66</span><span class="p">,</span> <span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="n">AtError</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">get_elements</span><span class="p">,</span> <span class="n">M66</span><span class="p">,</span> <span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">SimpleRadiation</span>
 <span class="kn">from</span> <span class="nn">at.physics</span> <span class="kn">import</span> <span class="n">gen_m66_elem</span><span class="p">,</span> <span class="n">gen_detuning_elem</span><span class="p">,</span> <span class="n">gen_quantdiff_elem</span>
 <span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span><span class="p">,</span> <span class="n">e_mass</span>
 <span class="kn">import</span> <span class="nn">copy</span>
@@ -400,6 +400,8 @@
                 <span class="n">Qx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Qy</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Vrf</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                 <span class="n">betax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">betay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
                 <span class="n">alphax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">alphay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="n">dispx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dispxp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="n">dispy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dispyp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                 <span class="n">Qpx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">Qpy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                 <span class="n">A1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">A2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                 <span class="n">A3</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">emitx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
@@ -414,10 +416,11 @@
 <span class="sd">    A simple ring consists of:</span>
 
 <span class="sd">    * an RF cavity,</span>
-<span class="sd">    * a 6x6 linear transfer map,</span>
+<span class="sd">    * a 6x6 linear transfer map with no radiation damping,</span>
+<span class="sd">    * a simple radiation damping element</span>
 <span class="sd">    * a detuning and chromaticity element,</span>
 <span class="sd">    * a simplified quantum diffusion element</span>
-<span class="sd">        which contains equilibrium emittance and radiation damping</span>
+<span class="sd">        which contains equilibrium emittance</span>
 
 <span class="sd">    Positional Arguments:</span>
 <span class="sd">        * energy [eV]</span>
@@ -434,6 +437,10 @@
 <span class="sd">        * betay: vertical beta function [m], Default=1</span>
 <span class="sd">        * alphax: horizontal alpha function, Default=0</span>
 <span class="sd">        * alphay: vertical alpha function, Default=0</span>
+<span class="sd">        * dispx: horizontal dispersion [m], Default=0</span>
+<span class="sd">        * dispxp: horizontal dispersion prime, Default=0</span>
+<span class="sd">        * dispy: vertical dispersion [m], Default=0</span>
+<span class="sd">        * dispyp: vertical dispersion prime, Default=0</span>
 <span class="sd">        * Qpx: horizontal linear chromaticity, Default=0</span>
 <span class="sd">        * Qpy: vertical linear chromaticity, Default=0</span>
 <span class="sd">        * A1: horizontal amplitude detuning coefficient, Default=0</span>
@@ -499,33 +506,46 @@
     <span class="n">M10</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">alphax</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">betax</span> <span class="o">*</span> <span class="n">s_dphi_x</span>
     <span class="n">M11</span> <span class="o">=</span> <span class="n">c_dphi_x</span> <span class="o">-</span> <span class="n">alphax</span> <span class="o">*</span> <span class="n">s_dphi_x</span>
 
+    <span class="n">M04</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">M00</span><span class="p">)</span> <span class="o">*</span> <span class="n">dispx</span> <span class="o">-</span> <span class="n">M01</span> <span class="o">*</span> <span class="n">dispxp</span>
+    <span class="n">M14</span> <span class="o">=</span> <span class="o">-</span><span class="n">M10</span> <span class="o">*</span> <span class="n">dispx</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">M11</span><span class="p">)</span> <span class="o">*</span> <span class="n">dispxp</span>
+    
     <span class="n">M22</span> <span class="o">=</span> <span class="n">c_dphi_y</span> <span class="o">+</span> <span class="n">alphay</span> <span class="o">*</span> <span class="n">s_dphi_y</span>
     <span class="n">M23</span> <span class="o">=</span> <span class="n">betay</span> <span class="o">*</span> <span class="n">s_dphi_y</span>
     <span class="n">M32</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">alphay</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">betay</span> <span class="o">*</span> <span class="n">s_dphi_y</span>
     <span class="n">M33</span> <span class="o">=</span> <span class="n">c_dphi_y</span> <span class="o">-</span> <span class="n">alphay</span> <span class="o">*</span> <span class="n">s_dphi_y</span>
 
+    <span class="n">M24</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">M22</span><span class="p">)</span> <span class="o">*</span> <span class="n">dispy</span> <span class="o">-</span> <span class="n">M23</span> <span class="o">*</span> <span class="n">dispyp</span>
+    <span class="n">M34</span> <span class="o">=</span> <span class="o">-</span><span class="n">M32</span> <span class="o">*</span> <span class="n">dispy</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">M33</span><span class="p">)</span> <span class="o">*</span> <span class="n">dispyp</span>
+    
+    
     <span class="n">M44</span> <span class="o">=</span> <span class="mf">1.</span>
     <span class="n">M45</span> <span class="o">=</span> <span class="mf">0.</span>
     <span class="n">M54</span> <span class="o">=</span> <span class="n">eta</span><span class="o">*</span><span class="n">circumference</span>
     <span class="n">M55</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="n">Mat66</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">M00</span><span class="p">,</span> <span class="n">M01</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-                         <span class="p">[</span><span class="n">M10</span><span class="p">,</span> <span class="n">M11</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M22</span><span class="p">,</span> <span class="n">M23</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-                         <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M32</span><span class="p">,</span> <span class="n">M33</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+    <span class="n">Mat66</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">M00</span><span class="p">,</span> <span class="n">M01</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M04</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+                         <span class="p">[</span><span class="n">M10</span><span class="p">,</span> <span class="n">M11</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M14</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+                         <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M22</span><span class="p">,</span> <span class="n">M23</span><span class="p">,</span> <span class="n">M24</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+                         <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M32</span><span class="p">,</span> <span class="n">M33</span><span class="p">,</span> <span class="n">M34</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
                          <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M44</span><span class="p">,</span> <span class="n">M45</span><span class="p">],</span>
                          <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">M54</span><span class="p">,</span> <span class="n">M55</span><span class="p">]],</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
 
     <span class="c1"># generate the linear tracking element, we set a length</span>
     <span class="c1"># which is needed to give the lattice object the correct length</span>
-    <span class="c1"># (although it is not used)</span>
+    <span class="c1"># (although it is not used for anything else)</span>
     <span class="n">lin_elem</span> <span class="o">=</span> <span class="n">M66</span><span class="p">(</span><span class="s1">&#39;Linear&#39;</span><span class="p">,</span> <span class="n">m66</span><span class="o">=</span><span class="n">Mat66</span><span class="p">,</span> <span class="n">Length</span><span class="o">=</span><span class="n">circumference</span><span class="p">)</span>
 
+    <span class="c1"># Generate the simple radiation element</span>
+    <span class="n">simplerad</span> <span class="o">=</span> <span class="n">SimpleRadiation</span><span class="p">(</span><span class="s1">&#39;SR&#39;</span><span class="p">,</span> <span class="n">taux</span><span class="o">=</span><span class="n">taux</span><span class="p">,</span> <span class="n">tauy</span><span class="o">=</span><span class="n">tauy</span><span class="p">,</span> 
+                                <span class="n">tauz</span><span class="o">=</span><span class="n">tauz</span><span class="p">,</span> <span class="n">U0</span><span class="o">=</span><span class="n">U0</span><span class="p">,</span> <span class="n">dispx</span><span class="o">=</span><span class="n">dispx</span><span class="p">,</span>
+                                <span class="n">dispy</span><span class="o">=</span><span class="n">dispy</span><span class="p">,</span> <span class="n">dispxp</span><span class="o">=</span><span class="n">dispxp</span><span class="p">,</span> 
+                                <span class="n">dispyp</span><span class="o">=</span><span class="n">dispyp</span><span class="p">)</span>
+                                
     <span class="c1"># Generate the simple quantum diffusion element</span>
     <span class="n">quantdiff</span> <span class="o">=</span> <span class="n">SimpleQuantDiff</span><span class="p">(</span><span class="s1">&#39;SQD&#39;</span><span class="p">,</span> <span class="n">betax</span><span class="o">=</span><span class="n">betax</span><span class="p">,</span> <span class="n">betay</span><span class="o">=</span><span class="n">betay</span><span class="p">,</span>
                                 <span class="n">emitx</span><span class="o">=</span><span class="n">emitx</span><span class="p">,</span> <span class="n">emity</span><span class="o">=</span><span class="n">emity</span><span class="p">,</span>
                                 <span class="n">espread</span><span class="o">=</span><span class="n">espread</span><span class="p">,</span> <span class="n">taux</span><span class="o">=</span><span class="n">taux</span><span class="p">,</span>
-                                <span class="n">tauy</span><span class="o">=</span><span class="n">tauy</span><span class="p">,</span> <span class="n">tauz</span><span class="o">=</span><span class="n">tauz</span><span class="p">,</span> <span class="n">U0</span><span class="o">=</span><span class="n">U0</span><span class="p">)</span>
+                                <span class="n">tauy</span><span class="o">=</span><span class="n">tauy</span><span class="p">,</span> <span class="n">tauz</span><span class="o">=</span><span class="n">tauz</span><span class="p">)</span>
 
     <span class="c1"># Generate the detuning element</span>
     <span class="n">nonlin_elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;NonLinear&#39;</span><span class="p">,</span> <span class="n">PassMethod</span><span class="o">=</span><span class="s1">&#39;DeltaQPass&#39;</span><span class="p">,</span>
@@ -535,7 +555,7 @@
                           <span class="n">A1</span><span class="o">=</span><span class="n">A1</span><span class="p">,</span> <span class="n">A2</span><span class="o">=</span><span class="n">A2</span><span class="p">,</span> <span class="n">A3</span><span class="o">=</span><span class="n">A3</span><span class="p">)</span>
 
     <span class="c1"># Assemble all elements into the lattice object</span>
-    <span class="n">ring</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">all_cavities</span> <span class="o">+</span> <span class="p">[</span><span class="n">lin_elem</span><span class="p">,</span> <span class="n">nonlin_elem</span><span class="p">,</span> <span class="n">quantdiff</span><span class="p">],</span>
+    <span class="n">ring</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">all_cavities</span> <span class="o">+</span> <span class="p">[</span><span class="n">lin_elem</span><span class="p">,</span> <span class="n">nonlin_elem</span><span class="p">,</span> <span class="n">simplerad</span><span class="p">,</span> <span class="n">quantdiff</span><span class="p">],</span>
                    <span class="n">energy</span><span class="o">=</span><span class="n">energy</span><span class="p">,</span> <span class="n">periodicity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">ring</span></div>

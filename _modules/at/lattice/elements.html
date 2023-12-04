@@ -1395,7 +1395,10 @@
 <div class="viewcode-block" id="SimpleQuantDiff"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SimpleQuantDiff">[docs]</a><span class="k">class</span> <span class="nc">SimpleQuantDiff</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Linear tracking element for a simplified quantum diffusion,</span>
-<span class="sd">    radiation damping and energy loss</span>
+<span class="sd">    radiation damping and energy loss.</span>
+
+<span class="sd">    Note: The damping times are needed to compute the correct</span>
+<span class="sd">    kick for the emittance. Radiation damping is NOT applied.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
     <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;SimpleQuantDiffPass&#39;</span><span class="p">}</span>
@@ -1404,7 +1407,7 @@
                  <span class="n">betay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">emitx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">emity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">espread</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">taux</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">tauy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-                 <span class="n">tauz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">U0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">tauz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
@@ -1419,7 +1422,6 @@
 <span class="sd">            taux:          Horizontal damping time [turns]</span>
 <span class="sd">            tauy:          Vertical damping time [turns]</span>
 <span class="sd">            tauz:          Longitudinal damping time [turns]</span>
-<span class="sd">            U0:             Energy Loss [eV]</span>
 
 <span class="sd">        Default PassMethod: ``SimpleQuantDiffPass``</span>
 <span class="sd">       &quot;&quot;&quot;</span>
@@ -1449,10 +1451,59 @@
         <span class="k">if</span> <span class="n">espread</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="k">assert</span> <span class="n">tauz</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if espread is given, tauz must be non zero&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">U0</span> <span class="o">=</span> <span class="n">U0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">betax</span> <span class="o">=</span> <span class="n">betax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">betay</span> <span class="o">=</span> <span class="n">betay</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SimpleRadiation"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SimpleRadiation">[docs]</a><span class="k">class</span> <span class="nc">SimpleRadiation</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">,</span> <span class="n">Radiative</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple radiation damping and energy loss&quot;&quot;&quot;</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;taux&#39;</span><span class="p">,</span> <span class="s1">&#39;tauy&#39;</span><span class="p">,</span> <span class="s1">&#39;tauz&#39;</span><span class="p">]</span>
+    <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;SimpleRadiationPass&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">taux</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">tauy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">tauz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">U0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            family_name:    Name of the element</span>
+
+<span class="sd">        Optional Args:</span>
+<span class="sd">            taux:          Horizontal damping time [turns]</span>
+<span class="sd">            tauy:          Vertical damping time [turns]</span>
+<span class="sd">            tauz:          Longitudinal damping time [turns]</span>
+<span class="sd">            U0:            Energy loss per turn [eV]</span>
+
+<span class="sd">        Default PassMethod: ``SimpleRadiationPass``</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
+
+        <span class="k">assert</span> <span class="n">taux</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;taux must be greater than or equal to 0&#39;</span>
+        <span class="k">if</span> <span class="n">taux</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">dampx</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dampx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">taux</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">tauy</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tauy must be greater than or equal to 0&#39;</span>
+        <span class="k">if</span> <span class="n">tauy</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">dampy</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dampy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">tauy</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">tauz</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tauz must be greater than or equal to 0&#39;</span>
+        <span class="k">if</span> <span class="n">tauz</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">dampz</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dampz</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">tauz</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">U0</span> <span class="o">=</span> <span class="n">U0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">damp_mat_diag</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dampx</span><span class="p">,</span> <span class="n">dampx</span><span class="p">,</span>
+                                          <span class="n">dampy</span><span class="p">,</span> <span class="n">dampy</span><span class="p">,</span>
+                                          <span class="n">dampz</span><span class="p">,</span> <span class="n">dampz</span><span class="p">])</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SimpleRadiation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Corrector"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Corrector">[docs]</a><span class="k">class</span> <span class="nc">Corrector</span><span class="p">(</span><span class="n">LongElement</span><span class="p">):</span>

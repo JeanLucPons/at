@@ -480,15 +480,18 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <td><p>Sextupole element</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.SimpleQuantDiff" title="at.lattice.elements.SimpleQuantDiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleQuantDiff</span></code></a>(family_name[, betax, betay, ...])</p></td>
-<td><p>Linear tracking element for a simplified quantum diffusion, radiation damping and energy loss</p></td>
+<td><p>Linear tracking element for a simplified quantum diffusion, radiation damping and energy loss.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.SliceMoments" title="at.lattice.elements.SliceMoments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SliceMoments</span></code></a>(family_name, nslice, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.SimpleRadiation" title="at.lattice.elements.SimpleRadiation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleRadiation</span></code></a>(family_name[, taux, tauy, ...])</p></td>
+<td><p>Simple radiation damping and energy loss</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.SliceMoments" title="at.lattice.elements.SliceMoments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SliceMoments</span></code></a>(family_name, nslice, **kwargs)</p></td>
 <td><p>Element to compute slices mean and std</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
 <td><p>Thin multipole element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wiggler</span></code></a>(family_name, length, wiggle_period, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wiggler</span></code></a>(family_name, length, wiggle_period, ...)</p></td>
 <td><p>Wiggler element</p></td>
 </tr>
 </tbody>
@@ -1354,10 +1357,12 @@ suffix.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.SimpleQuantDiff">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleQuantDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">espread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taux</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SimpleQuantDiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleQuantDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">espread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taux</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SimpleQuantDiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code>, <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
 <p>Linear tracking element for a simplified quantum diffusion,
-radiation damping and energy loss</p>
+radiation damping and energy loss.</p>
+<p>Note: The damping times are needed to compute the correct
+kick for the emittance. Radiation damping is NOT applied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Name of the element</p>
@@ -1371,14 +1376,38 @@ emity:         Vertical equilibrium emittance [m.rad]
 espread:       Equilibrium energy spread
 taux:          Horizontal damping time [turns]
 tauy:          Vertical damping time [turns]
-tauz:          Longitudinal damping time [turns]
-U0:             Energy Loss [eV]</p>
+tauz:          Longitudinal damping time [turns]</p>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">SimpleQuantDiffPass</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.lattice.elements.SimpleQuantDiff.default_pass">
 <span class="sig-name descname"><span class="pre">default_pass</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">'IdentityPass',</span> <span class="pre">True:</span> <span class="pre">'SimpleQuantDiffPass'}</span></em><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff.default_pass" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.SimpleRadiation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleRadiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taux</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SimpleRadiation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SimpleRadiation" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code>, <a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Radiative</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Simple radiation damping and energy loss</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Name of the element</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Optional Args:</dt><dd><p>taux:          Horizontal damping time [turns]
+tauy:          Vertical damping time [turns]
+tauz:          Longitudinal damping time [turns]
+U0:            Energy loss per turn [eV]</p>
+</dd>
+</dl>
+<p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">SimpleRadiationPass</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.lattice.elements.SimpleRadiation.default_pass">
+<span class="sig-name descname"><span class="pre">default_pass</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">'IdentityPass',</span> <span class="pre">True:</span> <span class="pre">'SimpleRadiationPass'}</span></em><a class="headerlink" href="#at.lattice.elements.SimpleRadiation.default_pass" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2139,6 +2168,26 @@ array-like object</p></li>
      <code class="docutils literal notranslate">
       <span class="pre">
        SimpleQuantDiff.default_pass
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.SimpleRadiation">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SimpleRadiation
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SimpleRadiation.default_pass">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SimpleRadiation.default_pass
       </span>
      </code>
     </a>
