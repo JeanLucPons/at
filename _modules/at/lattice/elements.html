@@ -1375,7 +1375,7 @@
 
 <div class="viewcode-block" id="M66"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.M66">[docs]</a><span class="k">class</span> <span class="nc">M66</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear (6, 6) transfer matrix&quot;&quot;&quot;</span>
-    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;M66&quot;</span><span class="p">]</span>
     <span class="n">_conversions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Element</span><span class="o">.</span><span class="n">_conversions</span><span class="p">,</span> <span class="n">M66</span><span class="o">=</span><span class="n">_array66</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">m66</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1389,7 +1389,8 @@
         <span class="k">if</span> <span class="n">m66</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">m66</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;Matrix66Pass&#39;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">M66</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">M66</span><span class="o">=</span><span class="n">m66</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;M66&quot;</span><span class="p">,</span> <span class="n">m66</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">M66</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SimpleQuantDiff"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SimpleQuantDiff">[docs]</a><span class="k">class</span> <span class="nc">SimpleQuantDiff</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
@@ -1458,7 +1459,10 @@
 
 <div class="viewcode-block" id="SimpleRadiation"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SimpleRadiation">[docs]</a><span class="k">class</span> <span class="nc">SimpleRadiation</span><span class="p">(</span><span class="n">_DictLongtMotion</span><span class="p">,</span> <span class="n">Radiative</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple radiation damping and energy loss&quot;&quot;&quot;</span>
-    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;taux&#39;</span><span class="p">,</span> <span class="s1">&#39;tauy&#39;</span><span class="p">,</span> <span class="s1">&#39;tauz&#39;</span><span class="p">]</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
+    <span class="n">_conversions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Element</span><span class="o">.</span><span class="n">_conversions</span><span class="p">,</span> <span class="n">U0</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">damp_mat_diag</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,)))</span>
+
     <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;SimpleRadiationPass&#39;</span><span class="p">}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1477,8 +1481,6 @@
 
 <span class="sd">        Default PassMethod: ``SimpleRadiationPass``</span>
 <span class="sd">       &quot;&quot;&quot;</span>
-        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
-
         <span class="k">assert</span> <span class="n">taux</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;taux must be greater than or equal to 0&#39;</span>
         <span class="k">if</span> <span class="n">taux</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="n">dampx</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1497,11 +1499,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">dampz</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">tauz</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">U0</span> <span class="o">=</span> <span class="n">U0</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">damp_mat_diag</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dampx</span><span class="p">,</span> <span class="n">dampx</span><span class="p">,</span>
-                                          <span class="n">dampy</span><span class="p">,</span> <span class="n">dampy</span><span class="p">,</span>
-                                          <span class="n">dampz</span><span class="p">,</span> <span class="n">dampz</span><span class="p">])</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;U0&quot;</span><span class="p">,</span> <span class="n">U0</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;damp_mat_diag&quot;</span><span class="p">,</span>
+                          <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dampx</span><span class="p">,</span> <span class="n">dampx</span><span class="p">,</span> <span class="n">dampy</span><span class="p">,</span> <span class="n">dampy</span><span class="p">,</span> <span class="n">dampz</span><span class="p">,</span> <span class="n">dampz</span><span class="p">]))</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">SimpleRadiation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
