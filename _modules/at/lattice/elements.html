@@ -1173,8 +1173,8 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            family_name:    Name of the element</span>
-<span class="sd">            poly_a:         Array of normal multipole components</span>
-<span class="sd">            poly_b:         Array of skew multipole components</span>
+<span class="sd">            poly_a:         Array of skew multipole components</span>
+<span class="sd">            poly_b:         Array of normal multipole components</span>
 
 <span class="sd">        Keyword arguments:</span>
 <span class="sd">            MaxOrder:       Number of desired multipoles. Default: highest</span>
@@ -1243,8 +1243,8 @@ document.write(`
 <span class="sd">        Args:</span>
 <span class="sd">            family_name:    Name of the element</span>
 <span class="sd">            length:         Element length [m]</span>
-<span class="sd">            poly_a:         Array of normal multipole components</span>
-<span class="sd">            poly_b:         Array of skew multipole components</span>
+<span class="sd">            poly_a:         Array of skew multipole components</span>
+<span class="sd">            poly_b:         Array of normal multipole components</span>
 
 <span class="sd">        Keyword arguments:</span>
 <span class="sd">            MaxOrder:       Number of desired multipoles. Default: highest</span>
@@ -1331,16 +1331,14 @@ document.write(`
 <span class="sd">            family_name:    Name of the element</span>
 <span class="sd">            length:         Element length [m]</span>
 <span class="sd">            bending_angle:  Bending angle [rd]</span>
-<span class="sd">            poly_a:         Array of normal multipole components</span>
-<span class="sd">            poly_b:         Array of skew multipole components</span>
-<span class="sd">            k=0:            Field index</span>
+<span class="sd">            k:              Focusing strength [m^-2]</span>
 
 <span class="sd">        Keyword arguments:</span>
 <span class="sd">            EntranceAngle=0.0:  entrance angle</span>
 <span class="sd">            ExitAngle=0.0:      exit angle</span>
 <span class="sd">            PolynomB:           straight multipoles</span>
 <span class="sd">            PolynomA:           skew multipoles</span>
-<span class="sd">            MaxOrder:           Number of desired multipoles</span>
+<span class="sd">            MaxOrder=0:         Number of desired multipoles</span>
 <span class="sd">            NumIntSt=10:        Number of integration steps</span>
 <span class="sd">            FullGap:            Magnet full gap</span>
 <span class="sd">            FringeInt1:         Extension of the entrance fringe field</span>
@@ -1363,9 +1361,9 @@ document.write(`
 <span class="sd">            FieldScaling:       Scaling factor applied to the magnetic field</span>
 
 <span class="sd">        Available PassMethods: :ref:`BndMPoleSymplectic4Pass`,</span>
-<span class="sd">                               :ref:`BendLinearPass`,</span>
-<span class="sd">        :ref:`ExactSectorBendPass`, :ref:`ExactRectangularBendPass`,</span>
-<span class="sd">        :ref:`ExactRectBendPass`, BndStrMPoleSymplectic4Pass</span>
+<span class="sd">        :ref:`BendLinearPass`, :ref:`ExactSectorBendPass`,</span>
+<span class="sd">        :ref:`ExactRectangularBendPass`, :ref:`ExactRectBendPass`,</span>
+<span class="sd">        BndStrMPoleSymplectic4Pass</span>
 
 <span class="sd">        Default PassMethod: :ref:`BndMPoleSymplectic4Pass`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1436,12 +1434,12 @@ document.write(`
 <span class="sd">        Args:</span>
 <span class="sd">            family_name:    Name of the element</span>
 <span class="sd">            length:         Element length [m]</span>
-<span class="sd">            k:              strength [mˆ-2]</span>
+<span class="sd">            k:              Focusing strength [mˆ-2]</span>
 
 <span class="sd">        Keyword Arguments:</span>
 <span class="sd">            PolynomB:           straight multipoles</span>
 <span class="sd">            PolynomA:           skew multipoles</span>
-<span class="sd">            MaxOrder:           Number of desired multipoles</span>
+<span class="sd">            MaxOrder=1:         Number of desired multipoles</span>
 <span class="sd">            NumIntSteps=10:     Number of integration steps</span>
 <span class="sd">            FringeQuadEntrance: 0: no fringe field effect (default)</span>
 
