@@ -19,10 +19,14 @@ def build_wheel(wheel_dir, config_settings=None, metadata_dir=None):
     os.environ["OPENMP"] = str(_get_option(config_settings, 'OPENMP', '0'))
     omp_threshold = _get_option(config_settings,
                                 'OMP_PARTICLE_THRESHOLD', 'None')
+    os.environ["OPENCL"] = str(_get_option(config_settings, 'OPENCL', '0'))
+    os.environ["CUDA"] = str(_get_option(config_settings, 'CUDA', '0'))
+
     if omp_threshold is not None:
         os.environ["OMP_PARTICLE_THRESHOLD"] = str(omp_threshold)
     print("** MPI:", os.environ.get('MPI', 'None'))
     print("** OPENMP:", os.environ.get('OPENMP', 'None'))
+    print("** CUDA:", os.environ.get('CUDA', 'None'))
     ret = _orig.build_wheel(wheel_dir, config_settings, metadata_dir)
     print("** Leaving build_wheel")
     return ret
