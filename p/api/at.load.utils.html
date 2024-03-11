@@ -491,7 +491,7 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.element_to_m" title="at.load.utils.element_to_m"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_to_m</span></code></a>(elem)</p></td>
 <td><p>Builds the Matlab-evaluable string for an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.find_class" title="at.load.utils.find_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_class</span></code></a>(elem_dict[, quiet])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.find_class" title="at.load.utils.find_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_class</span></code></a>(elem_dict[, quiet, index])</p></td>
 <td><p>Identify the class of an element from its attributes</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.find_class_name" title="at.load.utils.find_class_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_class_name</span></code></a>(elem_dict[, quiet])</p></td>
@@ -508,7 +508,7 @@ document.write(`
 <p class="rubric">Classes</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RingParam</span></code>(family_name, energy[, periodicity])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RingParam</span></code>(name, energy[, periodicity, particle])</p></td>
 <td><p>Private class for Matlab RingParam element</p></td>
 </tr>
 </tbody>
@@ -591,7 +591,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.load.utils.find_class">
-<span class="sig-name descname"><span class="pre">find_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#find_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.find_class" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">find_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#find_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.find_class" title="Link to this definition">#</a></dt>
 <dd><p>Identify the class of an element from its attributes</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -599,6 +599,7 @@ document.write(`
 <li><p><strong>elem_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – The dictionary of keyword arguments passed to the
 Element constructor.</p></li>
 <li><p><strong>quiet</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Suppress the warning for non-standard classes</p></li>
+<li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Element index in the lattice</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

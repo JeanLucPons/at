@@ -508,8 +508,17 @@ automatically imported.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lattice</span></code></a>()</p></td>
 <td><p>Lattice object.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.lattice_object.Filter" title="at.lattice.lattice_object.Filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Filter</span></code></a></p></td>
+<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code></a>[..., <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a>]]</p></td>
+</tr>
 </tbody>
 </table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.lattice.lattice_object.Filter">
+<span class="sig-name descname"><span class="pre">Filter</span></span><a class="headerlink" href="#at.lattice.lattice_object.Filter" title="Link to this definition">#</a></dt>
+<dd><p>alias of <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code></a>[…, <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a>]]</p>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Lattice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice" title="Link to this definition">#</a></dt>
@@ -602,13 +611,14 @@ energy and periodicity if not yet defined.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.append">
 <span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice.append" title="Link to this definition">#</a></dt>
-<dd><p>This method overwrites the inherited method
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">list.append()</span></code>,
-it behavior is changed, it accepts only AT lattice elements
+<dd><p>This method overwrites the inherited method <code class="xref py py-meth docutils literal notranslate"><span class="pre">list.append()</span></code>,
+its behavior is changed, it accepts only AT lattice elements
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">Element</span></code> as input argument.</p>
-<p>Equivalents syntaxes:
-&gt;&gt;&gt; ring.append(elem)
-&gt;&gt;&gt; ring += [elem]</p>
+<p>Equivalent syntaxes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span> <span class="o">+=</span> <span class="p">[</span><span class="n">elem</span><span class="p">]</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -764,9 +774,11 @@ attribute is 0.0 are <a class="reference external" href="https://docs.python.org
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.concatenate">
 <span class="sig-name descname"><span class="pre">concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">lattices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice.concatenate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice.concatenate" title="Link to this definition">#</a></dt>
 <dd><p>Concatenate several <cite>Iterable[Element]</cite> with the lattice</p>
-<p>Equivalents syntaxes:
-&gt;&gt;&gt; newring = ring.concatenate(r1, r2, r3, copy=True)
-&gt;&gt;&gt; newring = ring + r1 + r2 + r3</p>
+<p>Equivalent syntaxes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">newring</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newring</span> <span class="o">=</span> <span class="n">ring</span> <span class="o">+</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span> <span class="o">+</span> <span class="n">r3</span>
+</pre></div>
+</div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span> <span class="o">+=</span> <span class="n">r1</span>
 </pre></div>
@@ -810,14 +822,17 @@ otherwise None</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.develop">
-<span class="sig-name descname"><span class="pre">develop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice.develop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice.develop" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">develop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice.develop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice.develop" title="Link to this definition">#</a></dt>
 <dd><p>Develop a periodical lattice by repeating its elements
 <em>self.periodicity</em> times</p>
-<p>The elements of the new lattice are deep copies ot the original
-elements, so that they are all independent.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>newlattice</strong> – The developed lattice</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>copy_elements</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, deep copies of the elements are used for
+the repetition. Otherwise, the original elements are repeated in the
+developed lattice.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>newlattice</strong> – The developed lattice</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1082,9 +1097,11 @@ attributes:</p>
 <span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elems</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice.extend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice.extend" title="Link to this definition">#</a></dt>
 <dd><p>This method adds all the elements of <cite>elems</cite> to the end of the
 lattice. The behavior is the same as for a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a></p>
-<p>Equivalents syntaxes:
-&gt;&gt;&gt; ring.extend(elems)
-&gt;&gt;&gt; ring += elems</p>
+<p>Equivalent syntaxes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ring</span> <span class="o">+=</span> <span class="n">elems</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -3714,18 +3731,20 @@ Unix shell-style wildcards.</p></li>
 <span class="sig-name descname"><span class="pre">repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/lattice_object.html#Lattice.repeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.lattice_object.Lattice.repeat" title="Link to this definition">#</a></dt>
 <dd><p>This method allows to repeat the lattice <cite>n</cite> times.
 If <cite>n</cite> does not divide <cite>ring.periodicity</cite>, the new ring
-periodicity is set to 1, otherwise  it is et to
+periodicity is set to 1, otherwise  it is set to
 <cite>ring.periodicity /= n</cite>.</p>
-<p>Equivalents syntaxes:
-&gt;&gt;&gt; newring = ring.repeat(n)
-&gt;&gt;&gt; newring = ring * n</p>
+<p>Equivalent syntaxes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">newring</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newring</span> <span class="o">=</span> <span class="n">ring</span> <span class="o">*</span> <span class="n">n</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – number of repetition</p></li>
-<li><p><strong>copy_elements</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Default <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>.
-If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> deepcopies of the
-lattice are used for the repetition</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – number of repetitions</p></li>
+<li><p><strong>copy_elements</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, deep copies of the lattice are used for
+the repetition. Otherwise, the original elements are repeated in the
+developed lattice.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4765,6 +4784,7 @@ Analyse elements for radiation state</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.lattice_object.Filter"><code class="docutils literal notranslate"><span class="pre">Filter</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.lattice_object.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.lattice_object.Lattice.append"><code class="docutils literal notranslate"><span class="pre">Lattice.append()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.lattice_object.Lattice.attrs_filter"><code class="docutils literal notranslate"><span class="pre">Lattice.attrs_filter()</span></code></a></li>
