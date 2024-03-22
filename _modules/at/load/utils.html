@@ -555,7 +555,7 @@ document.write(`
             <span class="n">low</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">return</span> <span class="n">low</span>
 
-    <span class="n">class_name</span> <span class="o">=</span> <span class="n">elem_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">class_name</span> <span class="o">=</span> <span class="n">elem_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_CLASS_MAP</span><span class="p">[</span><span class="n">class_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
