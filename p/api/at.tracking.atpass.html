@@ -482,7 +482,7 @@ document.write(`
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">elempass</span></code>(element, r_in)</p></td>
 <td><p>Track input particles r_in through a single element.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.atpass.reset_rng" title="at.tracking.atpass.reset_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_rng</span></code></a>([rank, seed])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.atpass.reset_rng" title="at.tracking.atpass.reset_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_rng</span></code></a>(*[, rank, seed])</p></td>
 <td><p>Reset the <em>common</em> and <em>thread</em> random generators.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.tracking.atpass.common_rng" title="at.tracking.atpass.common_rng"><code class="xref py py-obj docutils literal notranslate"><span class="pre">common_rng</span></code></a>()</p></td>
@@ -501,13 +501,15 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.tracking.atpass.reset_rng">
-<span class="sig-name descname"><span class="pre">reset_rng</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.tracking.atpass.reset_rng" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset_rng</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.tracking.atpass.reset_rng" title="Link to this definition">#</a></dt>
 <dd><p>Reset the <em>common</em> and <em>thread</em> random generators.</p>
+<p>The seed is applied unchanged to the “common” generator, and modified in a
+thread-specific way to the “thread” generator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rank</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – thread identifier (for MPI and python multiprocessing)</p></li>
-<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – single seed for both generators</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – single seed for both generators. Default: initial seed</p></li>
 </ul>
 </dd>
 </dl>

@@ -391,14 +391,14 @@ document.write(`
 
 <span class="k">def</span> <span class="nf">_atpass_fork</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">rin</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Single forked job&quot;&quot;&quot;</span>
-    <span class="n">reset_rng</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">reset_rng</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">_atpass</span><span class="p">(</span><span class="n">_globring</span><span class="p">,</span> <span class="n">rin</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rin</span><span class="p">,</span> <span class="n">result</span>
 
 
 <span class="k">def</span> <span class="nf">_atpass_spawn</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">rin</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Single spawned job&quot;&quot;&quot;</span>
-    <span class="n">reset_rng</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">reset_rng</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">_atpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">rin</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rin</span><span class="p">,</span> <span class="n">result</span>
 
