@@ -667,7 +667,12 @@ document.write(`
         <span class="k">def</span> <span class="nf">copy_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
             <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
             <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-                <span class="n">ring</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">ring</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                    <span class="n">check</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span>
+                    <span class="n">ring</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span> <span class="k">if</span> <span class="n">ok</span> <span class="k">else</span> <span class="n">el</span> 
+                            <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">ok</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">check</span><span class="p">)]</span>
                 <span class="n">func</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">ring</span>
             <span class="k">return</span> <span class="n">wrapper</span>

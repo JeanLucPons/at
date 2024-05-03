@@ -378,7 +378,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">BeamMoments</span><span class="p">,</span> <span class="n">Collective</span><span class="p">,</span> <span class="n">QuantumDiffusion</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="n">VariableMultipole</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">refpts_iterator</span><span class="p">,</span> <span class="n">set_value_refpts</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">checktype</span><span class="p">,</span> <span class="n">get_bool_index</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">checktype</span><span class="p">,</span> <span class="n">checkattr</span><span class="p">,</span> <span class="n">get_bool_index</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fortran_align&#39;</span><span class="p">,</span> <span class="s1">&#39;get_bunches&#39;</span><span class="p">,</span> <span class="s1">&#39;format_results&#39;</span><span class="p">,</span>
@@ -404,7 +404,10 @@ document.write(`
 <div class="viewcode-block" id="variable_refs">
 <a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.variable_refs">[docs]</a>
 <span class="k">def</span> <span class="nf">variable_refs</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checktype</span><span class="p">(</span><span class="n">_DISABLE_ELEMS</span><span class="p">))</span></div>
+    <span class="n">idref</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checkattr</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">))</span>
+    <span class="n">varref</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checktype</span><span class="p">(</span><span class="n">_DISABLE_ELEMS</span><span class="p">))</span>
+    <span class="n">varref</span> <span class="o">=</span> <span class="n">varref</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">idref</span>
+    <span class="k">return</span> <span class="n">varref</span></div>
 
 
 
