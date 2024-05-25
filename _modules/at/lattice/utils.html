@@ -28,7 +28,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -41,6 +43,7 @@
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/lattice/utils';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -405,6 +408,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">compress</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">attrgetter</span>
 <span class="kn">from</span> <span class="nn">fnmatch</span> <span class="kn">import</span> <span class="n">fnmatch</span>
 <span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Dipole</span>
 
@@ -426,7 +430,7 @@ document.write(`
            <span class="s1">&#39;set_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;set_tilt&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rotation&#39;</span><span class="p">,</span>
            <span class="s1">&#39;tilt_elem&#39;</span><span class="p">,</span> <span class="s1">&#39;shift_elem&#39;</span><span class="p">,</span> <span class="s1">&#39;rotate_elem&#39;</span><span class="p">,</span>
            <span class="s1">&#39;get_value_refpts&#39;</span><span class="p">,</span> <span class="s1">&#39;set_value_refpts&#39;</span><span class="p">,</span> <span class="s1">&#39;Refpts&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;get_geometry&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;get_geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;setval&#39;</span><span class="p">,</span> <span class="s1">&#39;getval&#39;</span><span class="p">]</span>
 
 <span class="n">_axis_def</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot; [m]&quot;</span><span class="p">),</span>
@@ -485,6 +489,78 @@ document.write(`
         <span class="n">tp</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
     <span class="k">return</span> <span class="ne">TypeError</span><span class="p">(</span>
         <span class="s2">&quot;Invalid refpts type </span><span class="si">{0}</span><span class="s2">. Allowed types: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tp</span><span class="p">,</span> <span class="n">types</span><span class="p">))</span>
+
+
+<span class="c1"># setval and getval return pickleable functions: no inner, nested function</span>
+<span class="c1"># are allowed. So nested functions are replaced be module-level callable</span>
+<span class="c1"># class instances</span>
+<span class="k">class</span> <span class="nc">_AttrItemGetter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;attrname&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrname</span> <span class="o">=</span> <span class="n">attrname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrname</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="getval">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.getval">[docs]</a>
+<span class="k">def</span> <span class="nf">getval</span><span class="p">(</span><span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a callable object which fetches item *index* of</span>
+<span class="sd">    attribute *attrname* of its operand. Examples:</span>
+
+<span class="sd">    - After ``f = getval(&#39;Length&#39;)``, ``f(elem)`` returns ``elem.Length``</span>
+<span class="sd">    - After ``f = getval(&#39;PolynomB, index=1)``, ``f(elem)`` returns</span>
+<span class="sd">      ``elem.PolynomB[1]``</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">attrgetter</span><span class="p">(</span><span class="n">attrname</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_AttrItemGetter</span><span class="p">(</span><span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">_AttrSetter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;attrname&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrname</span> <span class="o">=</span> <span class="n">attrname</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_AttrItemSetter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;attrname&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrname</span> <span class="o">=</span> <span class="n">attrname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrname</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+
+<div class="viewcode-block" id="setval">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.setval">[docs]</a>
+<span class="k">def</span> <span class="nf">setval</span><span class="p">(</span><span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a callable object which sets the value of  item *index* of</span>
+<span class="sd">    attribute *attrname* of its 1st argument to it 2nd orgument.</span>
+
+<span class="sd">    - After ``f = setval(&#39;Length&#39;)``, ``f(elem, value)`` is equivalent to</span>
+<span class="sd">      ``elem.Length = value``</span>
+<span class="sd">    - After ``f = setval(&#39;PolynomB, index=1)``, ``f(elem, value)`` is</span>
+<span class="sd">      equivalent to ``elem.PolynomB[1] = value``</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_AttrSetter</span><span class="p">(</span><span class="n">attrname</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_AttrItemSetter</span><span class="p">(</span><span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span></div>
+
 
 
 <span class="c1"># noinspection PyIncorrectDocstring</span>
@@ -1197,13 +1273,7 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">        attrvalues: numpy Array of attribute values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">getf</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">getf</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
-
+    <span class="n">getf</span> <span class="o">=</span> <span class="n">getval</span><span class="p">(</span><span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">getf</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
                                                                <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)])</span></div>
 
@@ -1243,13 +1313,7 @@ document.write(`
 <span class="sd">             elements are shared with the original lattice.</span>
 <span class="sd">             Any further modification will affect both lattices.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">setf</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">attrname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">setf</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-            <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-
+    <span class="n">setf</span> <span class="o">=</span> <span class="n">setval</span><span class="p">(</span><span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">increment</span><span class="p">:</span>
         <span class="n">attrvalues</span> <span class="o">+=</span> <span class="n">get_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
                                        <span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
@@ -1262,8 +1326,7 @@ document.write(`
     <span class="c1"># noinspection PyShadowingNames</span>
     <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">regex</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">elm</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
-                                            <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),</span> <span class="n">values</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">elm</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),</span> <span class="n">values</span><span class="p">):</span>
             <span class="n">setf</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">attrvalues</span><span class="p">,</span> <span class="n">regex</span><span class="p">)</span></div>

@@ -29,7 +29,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -42,6 +44,7 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=fd10adb8"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.lattice.utils';</script>
@@ -329,6 +332,7 @@ document.write(`
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../howto/Installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/Primer.html">PyAT Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/variables.html">Variables</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to:</span></p>
 <ul class="nav bd-sidenav">
@@ -345,11 +349,13 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_variables.html">at.lattice.lattice_variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.rectangular_bend.html">at.lattice.rectangular_bend</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.lattice.utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variable_elements.html">at.lattice.variable_elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.variables.html">at.lattice.variables</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -590,6 +596,12 @@ is <a class="reference external" href="https://docs.python.org/3/library/constan
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.utils.get_geometry" title="at.lattice.utils.get_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geometry</span></code></a>(ring[, refpts, ...])</p></td>
 <td><p>Compute the 2D ring geometry in cartesian coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.utils.setval" title="at.lattice.utils.setval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setval</span></code></a>(attrname[, index])</p></td>
+<td><p>Return a callable object which sets the value of  item <em>index</em> of attribute <em>attrname</em> of its 1st argument to it 2nd orgument.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.utils.getval" title="at.lattice.utils.getval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getval</span></code></a>(attrname[, index])</p></td>
+<td><p>Return a callable object which fetches item <em>index</em> of attribute <em>attrname</em> of its operand.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1002,6 +1014,20 @@ Unix shell-style wildcards.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="at.lattice.utils.getval">
+<span class="sig-name descname"><span class="pre">getval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/utils.html#getval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.utils.getval" title="Link to this definition">#</a></dt>
+<dd><p>Return a callable object which fetches item <em>index</em> of
+attribute <em>attrname</em> of its operand. Examples:</p>
+<ul class="simple">
+<li><p>After <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">getval('Length')</span></code>, <code class="docutils literal notranslate"><span class="pre">f(elem)</span></code> returns <code class="docutils literal notranslate"><span class="pre">elem.Length</span></code></p></li>
+<li><p>After <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">getval('PolynomB,</span> <span class="pre">index=1)</span></code>, <code class="docutils literal notranslate"><span class="pre">f(elem)</span></code> returns
+<code class="docutils literal notranslate"><span class="pre">elem.PolynomB[1]</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="at.lattice.utils.make_copy">
 <span class="sig-name descname"><span class="pre">make_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/utils.html#make_copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.utils.make_copy" title="Link to this definition">#</a></dt>
 <dd><p>Decorator for optics functions</p>
@@ -1228,6 +1254,21 @@ Any further modification will affect both lattices.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="at.lattice.utils.setval">
+<span class="sig-name descname"><span class="pre">setval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/utils.html#setval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.utils.setval" title="Link to this definition">#</a></dt>
+<dd><p>Return a callable object which sets the value of  item <em>index</em> of
+attribute <em>attrname</em> of its 1st argument to it 2nd orgument.</p>
+<ul class="simple">
+<li><p>After <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">setval('Length')</span></code>, <code class="docutils literal notranslate"><span class="pre">f(elem,</span> <span class="pre">value)</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">elem.Length</span> <span class="pre">=</span> <span class="pre">value</span></code></p></li>
+<li><p>After <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">setval('PolynomB,</span> <span class="pre">index=1)</span></code>, <code class="docutils literal notranslate"><span class="pre">f(elem,</span> <span class="pre">value)</span></code> is
+equivalent to <code class="docutils literal notranslate"><span class="pre">elem.PolynomB[1]</span> <span class="pre">=</span> <span class="pre">value</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="at.lattice.utils.shift_elem">
 <span class="sig-name descname"><span class="pre">shift_elem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltaz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/utils.html#shift_elem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.utils.shift_elem" title="Link to this definition">#</a></dt>
 <dd><p>Sets the transverse displacement of an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
@@ -1378,6 +1419,7 @@ end of the last element.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.get_s_pos"><code class="docutils literal notranslate"><span class="pre">get_s_pos()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.get_uint32_index"><code class="docutils literal notranslate"><span class="pre">get_uint32_index()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.get_value_refpts"><code class="docutils literal notranslate"><span class="pre">get_value_refpts()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.getval"><code class="docutils literal notranslate"><span class="pre">getval()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.make_copy"><code class="docutils literal notranslate"><span class="pre">make_copy()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.refpts_count"><code class="docutils literal notranslate"><span class="pre">refpts_count()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.refpts_iterator"><code class="docutils literal notranslate"><span class="pre">refpts_iterator()</span></code></a></li>
@@ -1387,6 +1429,7 @@ end of the last element.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.set_shift"><code class="docutils literal notranslate"><span class="pre">set_shift()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.set_tilt"><code class="docutils literal notranslate"><span class="pre">set_tilt()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.set_value_refpts"><code class="docutils literal notranslate"><span class="pre">set_value_refpts()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.setval"><code class="docutils literal notranslate"><span class="pre">setval()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.shift_elem"><code class="docutils literal notranslate"><span class="pre">shift_elem()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.tilt_elem"><code class="docutils literal notranslate"><span class="pre">tilt_elem()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.lattice.utils.uint32_refpts"><code class="docutils literal notranslate"><span class="pre">uint32_refpts()</span></code></a></li>

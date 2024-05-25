@@ -28,7 +28,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -41,6 +43,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=fd10adb8"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -530,6 +533,13 @@ document.write(`
 </li>
       </ul></li>
       <li>
+    at.lattice.lattice_variables
+
+      <ul>
+        <li><a href="p/api/at.lattice.lattice_variables.html#module-at.lattice.lattice_variables">module</a>
+</li>
+      </ul></li>
+      <li>
     at.lattice.options
 
       <ul>
@@ -565,6 +575,13 @@ document.write(`
 </li>
       </ul></li>
       <li>
+    at.lattice.variables
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#module-at.lattice.variables">module</a>
+</li>
+      </ul></li>
+      <li>
     at.load
 
       <ul>
@@ -585,6 +602,8 @@ document.write(`
         <li><a href="p/api/at.load.elegant.html#module-at.load.elegant">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     at.load.matfile
 
@@ -592,8 +611,6 @@ document.write(`
         <li><a href="p/api/at.load.matfile.html#module-at.load.matfile">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     at.load.reprfile
 
@@ -859,6 +876,8 @@ document.write(`
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.bounds">bounds (VariableBase attribute)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.BRho">BRho (Lattice property)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Buffersize">Buffersize (BeamLoadingElement property)</a>
@@ -917,10 +936,10 @@ document.write(`
       </ul></li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Collective">Collective (class in at.lattice.elements)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Collimator">Collimator (class in at.lattice.elements)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.options.html#at.lattice.options.common">common (in module at.lattice.options)</a>
 </li>
       <li><a href="p/api/at.tracking.atpass.html#at.tracking.atpass.common_rng">common_rng() (in module at.tracking.atpass)</a>
@@ -958,6 +977,8 @@ document.write(`
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Corrector">Corrector (class in at.lattice.elements)</a>
 </li>
       <li><a href="p/api/at.constants.html#at.constants.Cq">Cq (in module at.constants)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.CustomVariable">CustomVariable (class in at.lattice.variables)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -999,8 +1020,12 @@ document.write(`
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Sextupole.DefaultOrder">(Sextupole attribute)</a>
 </li>
       </ul></li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.delta">delta (VariableBase attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.deltas">deltas (VariableList property)</a>
+</li>
       <li><a href="p/api/at.physics.nonlinear.html#at.physics.nonlinear.detuning">detuning() (in module at.physics.nonlinear)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.develop">develop() (Lattice method)</a>
@@ -1065,8 +1090,14 @@ document.write(`
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.ElementConstraints">ElementConstraints (class in at.matching.matching)</a>
 </li>
-      <li><a href="p/api/at.matching.matching.html#at.matching.matching.ElementVariable">ElementVariable (class in at.matching.matching)</a>
+      <li><a href="p/api/at.lattice.lattice_variables.html#at.lattice.lattice_variables.ElementVariable.elements">elements (ElementVariable property)</a>
 </li>
+      <li><a href="p/api/at.lattice.lattice_variables.html#at.lattice.lattice_variables.ElementVariable">ElementVariable (class in at.lattice.lattice_variables)</a>
+
+      <ul>
+        <li><a href="p/api/at.matching.matching.html#at.matching.matching.ElementVariable">(class in at.matching.matching)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.physics.energy_loss.html#at.physics.energy_loss.ELossMethod">ELossMethod (class in at.physics.energy_loss)</a>
@@ -1190,7 +1221,13 @@ document.write(`
       <li><a href="p/api/at.physics.radiation.html#at.physics.radiation.gen_quantdiff_elem">gen_quantdiff_elem() (in module at.physics.radiation)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.get">get() (Variable method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.get">(VariableBase method)</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.get">(VariableList method)</a>
+</li>
+      </ul></li>
       <li><a href="p/api/at.acceptance.acceptance.html#at.acceptance.acceptance.get_1d_acceptance">get_1d_acceptance() (in module at.acceptance.acceptance)</a>
 </li>
       <li><a href="p/api/at.acceptance.acceptance.html#at.acceptance.acceptance.get_acceptance">get_acceptance() (in module at.acceptance.acceptance)</a>
@@ -1271,14 +1308,14 @@ document.write(`
       </ul></li>
       <li><a href="p/api/at.physics.amat.html#at.physics.amat.get_mode_matrices">get_mode_matrices() (in module at.physics.amat)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.acceptance.acceptance.html#at.acceptance.acceptance.get_momentum_acceptance">get_momentum_acceptance() (in module at.acceptance.acceptance)</a>
 
       <ul>
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.get_momentum_acceptance">(Lattice method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.physics.linear.html#at.physics.linear.get_optics">get_optics() (in module at.physics.linear)</a>
 
       <ul>
@@ -1373,6 +1410,8 @@ document.write(`
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.get_vertical_acceptance">(Lattice method)</a>
 </li>
       </ul></li>
+      <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.getval">getval() (in module at.lattice.utils)</a>
+</li>
       <li><a href="p/api/at.acceptance.boundary.html#at.acceptance.boundary.GridMode">GridMode (class in at.acceptance.boundary)</a>
 </li>
   </ul></td>
@@ -1389,10 +1428,10 @@ document.write(`
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.has_cavity">has_cavity (Lattice property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.tracking.utils.html#at.tracking.utils.has_collective">has_collective() (in module at.tracking.utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.load.utils.html#at.load.utils.hasattrs">hasattrs() (in module at.load.utils)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Constraints.header">header() (Constraints static method)</a>
@@ -1401,6 +1440,10 @@ document.write(`
         <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.header">(Variable static method)</a>
 </li>
       </ul></li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.history">history (VariableBase property)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.history_length">history_length (VariableBase attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1409,7 +1452,15 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.i_range">i_range (Lattice property)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.increment">increment() (VariableBase method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.increment">(VariableList method)</a>
+</li>
+      </ul></li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.initial_phi">initial_phi() (Haissinski method)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.initial_value">initial_value (VariableBase property)</a>
 </li>
       <li><a href="p/api/at.tracking.utils.html#at.tracking.utils.initialize_lpass">initialize_lpass() (in module at.tracking.utils)</a>
 </li>
@@ -1429,10 +1480,10 @@ document.write(`
 </li>
       <li><a href="p/api/at.tracking.track.html#at.tracking.track.internal_plpass">internal_plpass() (in module at.tracking.track)</a>
 </li>
-      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.is_6d">is_6d (Lattice property)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.is_6d">is_6d (Lattice property)</a>
+</li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.is_collective">is_collective (Element property)</a>
 
       <ul>
@@ -1459,6 +1510,8 @@ document.write(`
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.items">(Element method)</a>
 </li>
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Quadrupole.items">(Quadrupole method)</a>
+</li>
+        <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Sextupole.items">(Sextupole method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1487,6 +1540,8 @@ document.write(`
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.last_value">last_value (VariableBase property)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice">Lattice (class in at.lattice.lattice_object)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.lattice_filter">lattice_filter() (in module at.lattice.lattice_object)</a>
@@ -1519,10 +1574,10 @@ document.write(`
       </ul></li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.LinoptConstraints">LinoptConstraints (class in at.matching.matching)</a>
 </li>
-      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.load">load() (Lattice static method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.load">load() (Lattice static method)</a>
+</li>
       <li><a href="p/api/at.load.elegant.html#at.load.elegant.load_elegant">load_elegant() (in module at.load.elegant)</a>
 </li>
       <li><a href="p/api/at.load.allfiles.html#at.load.allfiles.load_lattice">load_lattice() (in module at.load.allfiles)</a>
@@ -1623,6 +1678,8 @@ document.write(`
 </li>
         <li><a href="p/api/at.lattice.lattice_object.html#module-at.lattice.lattice_object">at.lattice.lattice_object</a>
 </li>
+        <li><a href="p/api/at.lattice.lattice_variables.html#module-at.lattice.lattice_variables">at.lattice.lattice_variables</a>
+</li>
         <li><a href="p/api/at.lattice.options.html#module-at.lattice.options">at.lattice.options</a>
 </li>
         <li><a href="p/api/at.lattice.particle_object.html#module-at.lattice.particle_object">at.lattice.particle_object</a>
@@ -1632,6 +1689,8 @@ document.write(`
         <li><a href="p/api/at.lattice.utils.html#module-at.lattice.utils">at.lattice.utils</a>
 </li>
         <li><a href="p/api/at.lattice.variable_elements.html#module-at.lattice.variable_elements">at.lattice.variable_elements</a>
+</li>
+        <li><a href="p/api/at.lattice.variables.html#module-at.lattice.variables">at.lattice.variables</a>
 </li>
         <li><a href="p/api/at.load.html#module-at.load">at.load</a>
 </li>
@@ -1718,6 +1777,8 @@ document.write(`
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.name">name (VariableBase attribute)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.nbunch">nbunch (Lattice property)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.no_filter">no_filter() (in module at.lattice.lattice_object)</a>
@@ -1828,6 +1889,8 @@ document.write(`
       </ul></li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.precompute_S">precompute_S() (Haissinski method)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.previous_value">previous_value (VariableBase property)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1898,6 +1961,8 @@ document.write(`
 </li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.refpts_iterator">refpts_iterator() (in module at.lattice.utils)</a>
 </li>
+      <li><a href="p/api/at.lattice.lattice_variables.html#at.lattice.lattice_variables.RefptsVariable">RefptsVariable (class in at.lattice.lattice_variables)</a>
+</li>
       <li><a href="p/api/at.load.allfiles.html#at.load.allfiles.register_format">register_format() (in module at.load.allfiles)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.remove_beamloading">remove_beamloading() (in module at.collective.beam_loading)</a>
@@ -1907,7 +1972,11 @@ document.write(`
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.replace">replace() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.lattice.options.html#at.lattice.options.reset">reset() (in module at.lattice.options)</a>, <a href="p/api/at.lattice.options.html#id0">[1]</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.reset">(VariableBase method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.tracking.atpass.html#at.tracking.atpass.reset_rng">reset_rng() (in module at.tracking.atpass)</a>
@@ -1979,7 +2048,13 @@ document.write(`
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.select">select() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.set">set() (Variable method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.set">(VariableBase method)</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.set">(VariableList method)</a>
+</li>
+      </ul></li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.set_6d">set_6d() (in module at.lattice.utils)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_beam_current">set_beam_current() (Lattice method)</a>
@@ -2020,6 +2095,8 @@ document.write(`
 </li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.set_output">set_output() (Haissinski method)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.set_previous">set_previous() (VariableBase method)</a>
+</li>
       <li><a href="p/api/at.physics.revolution.html#at.physics.revolution.set_rf_frequency">set_rf_frequency() (in module at.physics.revolution)</a>
 
       <ul>
@@ -2038,10 +2115,10 @@ document.write(`
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_rf_voltage">(Lattice method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.set_rotation">set_rotation() (in module at.lattice.utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.set_shift">set_shift() (in module at.lattice.utils)</a>
 
       <ul>
@@ -2063,6 +2140,8 @@ document.write(`
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_wake_turnhistory">set_wake_turnhistory() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.set_weights">set_weights() (Haissinski method)</a>
+</li>
+      <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.setval">setval() (in module at.lattice.utils)</a>
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Sextupole">Sextupole (class in at.lattice.elements)</a>
 </li>
@@ -2103,6 +2182,10 @@ document.write(`
       <ul>
         <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.status">(Variable method)</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.status">(VariableBase method)</a>
+</li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.status">(VariableList method)</a>
+</li>
       </ul></li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.BeamMoments.stds">stds (BeamMoments property)</a>
 
@@ -2110,6 +2193,10 @@ document.write(`
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.stds">(SliceMoments property)</a>
 </li>
       </ul></li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.step_down">step_down() (VariableBase method)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.step_up">step_up() (VariableBase method)</a>
+</li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.swap_faces">swap_faces() (Element method)</a>
 </li>
       <li><a href="p/api/at.physics.amat.html#at.physics.amat.symplectify">symplectify() (in module at.physics.amat)</a>
@@ -2192,6 +2279,8 @@ document.write(`
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.value">value (VariableBase property)</a>
+</li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Constraints.values">values() (Constraints method)</a>
 
       <ul>
@@ -2202,12 +2291,16 @@ document.write(`
 </li>
       <li><a href="p/api/at.tracking.utils.html#at.tracking.utils.variable_refs">variable_refs() (in module at.tracking.utils)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase">VariableBase (class in at.lattice.variables)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList">VariableList (class in at.lattice.variables)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.variable_elements.html#at.lattice.variable_elements.VariableMultipole">VariableMultipole (class in at.lattice.variable_elements)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbeam">Vbeam (BeamLoadingElement property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbeam_buffer">Vbeam_buffer (BeamLoadingElement property)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbunch">Vbunch (BeamLoadingElement property)</a>
