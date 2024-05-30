@@ -13,19 +13,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../../../_static/documentation_options.js?v=037dbd9b"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -56,27 +56,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -98,12 +94,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -139,26 +140,26 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../p/index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -251,32 +252,35 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../p/index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -325,13 +329,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -340,7 +344,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -378,63 +382,71 @@ document.write(`
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;load_mat&quot;</span><span class="p">,</span> <span class="s2">&quot;save_mat&quot;</span><span class="p">,</span> <span class="s2">&quot;load_m&quot;</span><span class="p">,</span> <span class="s2">&quot;save_m&quot;</span><span class="p">,</span> <span class="s2">&quot;load_var&quot;</span><span class="p">]</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">abspath</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">splitext</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Generator</span>
 <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.io</span>
 
+<span class="c1"># imports necessary in &#39;globals()&#39; for &#39;eval&#39;</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">NaN</span>  <span class="c1"># noqa: F401</span>
+
 <span class="kn">from</span> <span class="nn">.allfiles</span> <span class="kn">import</span> <span class="n">register_format</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">element_from_dict</span><span class="p">,</span> <span class="n">element_from_m</span><span class="p">,</span> <span class="n">RingParam</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">element_to_dict</span><span class="p">,</span> <span class="n">element_to_m</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Filter</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">split_ignoring_parentheses</span><span class="p">,</span> <span class="n">RingParam</span><span class="p">,</span> <span class="n">keep_elements</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">_drop_attrs</span><span class="p">,</span> <span class="n">_CLASS_MAP</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Particle</span><span class="p">,</span> <span class="n">Filter</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">params_filter</span><span class="p">,</span> <span class="n">AtError</span>
 
+<span class="c1"># Translation of RingParam attributes</span>
 <span class="n">_m2p</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;FamName&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Energy&quot;</span><span class="p">:</span> <span class="s2">&quot;energy&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Periodicity&quot;</span><span class="p">:</span> <span class="s2">&quot;periodicity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Particle&quot;</span><span class="p">:</span> <span class="s2">&quot;particle&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">:</span> <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">:</span> <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">,</span>  <span class="c1"># necessary: property</span>
+    <span class="s2">&quot;beam_current&quot;</span><span class="p">:</span> <span class="s2">&quot;beam_current&quot;</span><span class="p">,</span>  <span class="c1"># necessary: property</span>
+    <span class="s2">&quot;PassMethod&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;cavpts&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">_param_ignore</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;PassMethod&quot;</span><span class="p">,</span> <span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="s2">&quot;cavpts&quot;</span><span class="p">}</span>
+<span class="n">_p2m</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_m2p</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<span class="c1"># Attribute to drop when writing a file</span>
+<span class="n">_p2m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_drop_attrs</span><span class="p">)</span>
 
-<span class="c1"># Python to Matlab</span>
-<span class="n">_p2m</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="s2">&quot;periodicity&quot;</span><span class="p">,</span> <span class="s2">&quot;particle&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">,</span> <span class="s2">&quot;beam_current&quot;</span><span class="p">}</span>
+<span class="c1"># Python to Matlab type translation</span>
+<span class="n">_mattype_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nb">int</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">attr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">attr</span><span class="p">),</span>
+    <span class="n">Particle</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">attr</span><span class="p">:</span> <span class="n">attr</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+<span class="p">}</span>
+<span class="c1"># Matlab constructor function</span>
+<span class="c1"># Default: &quot;&quot;.join((&quot;at&quot;, element_class.__name__.lower()))</span>
+<span class="n">_mat_constructor</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Dipole&quot;</span><span class="p">:</span> <span class="s2">&quot;atsbend&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;M66&quot;</span><span class="p">:</span> <span class="s2">&quot;atM66&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 
 
-<span class="k">def</span> <span class="nf">matfile_generator</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_mat_encoder</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;type encoding for .mat files&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_mattype_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">attr</span><span class="p">:</span> <span class="n">attr</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_matfile_generator</span><span class="p">(</span>
     <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">mat_file</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Element</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run through Matlab cells and generate AT elements</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">        params:         Lattice building parameters (see :py:class:`.Lattice`)</span>
-<span class="sd">        mat_file:       File name</span>
-
-<span class="sd">    The following keys in ``params`` are used:</span>
-
-<span class="sd">    ============    ===================</span>
-<span class="sd">    **mat_key**     name of the Matlab variable containing the lattice.</span>
-<span class="sd">                    Default: Matlab variable name if there is only one,</span>
-<span class="sd">                    otherwise &#39;RING&#39;</span>
-<span class="sd">    **check**        Skip the coherence tests</span>
-<span class="sd">    **quiet**       Suppress the warning for non-standard classes</span>
-<span class="sd">    ============    ===================</span>
-
-<span class="sd">    Yields:</span>
-<span class="sd">        elem (Element): new Elements</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run through Matlab cells and generate AT elements&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">mclean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span> <span class="ow">is</span> <span class="n">numpy</span><span class="o">.</span><span class="n">str_</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">:</span>
             <span class="c1"># Convert strings in arrays back to strings.</span>
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
         <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">v</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">void</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">):</span>
                 <span class="c1"># Object =&gt; Return a dict</span>
                 <span class="k">return</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">mclean</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">fields</span><span class="p">}</span>
             <span class="k">else</span><span class="p">:</span>
@@ -442,17 +454,17 @@ document.write(`
                 <span class="k">return</span> <span class="n">v</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Remove any surplus dimensions in arrays.</span>
-            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="c1"># noinspection PyUnresolvedReferences</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;mat_file&quot;</span><span class="p">,</span> <span class="n">mat_file</span><span class="p">))</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;in_file&quot;</span><span class="p">,</span> <span class="n">mat_file</span><span class="p">))</span>
     <span class="n">matvars</span> <span class="o">=</span> <span class="p">[</span><span class="n">varname</span> <span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">m</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">varname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)]</span>
     <span class="n">default_key</span> <span class="o">=</span> <span class="n">matvars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matvars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;RING&quot;</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;mat_key&quot;</span><span class="p">,</span> <span class="n">default_key</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;use&quot;</span><span class="p">,</span> <span class="n">default_key</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="n">kok</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;__&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">k</span><span class="p">]</span>
         <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span>
-            <span class="s2">&quot;Selected mat_key does not exist, please select in: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kok</span><span class="p">)</span>
+            <span class="sa">f</span><span class="s2">&quot;Selected &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; variable does not exist, please select in: </span><span class="si">{</span><span class="n">kok</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
     <span class="n">check</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;check&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">quiet</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;quiet&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -460,7 +472,7 @@ document.write(`
     <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">mat_elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cell_array</span><span class="p">):</span>
         <span class="n">elem</span> <span class="o">=</span> <span class="n">mat_elem</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">mclean</span><span class="p">(</span><span class="n">elem</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">elem</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">fields</span><span class="p">}</span>
-        <span class="k">yield</span> <span class="n">element_from_dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="n">check</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">Element</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="n">check</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">ringparam_filter</span><span class="p">(</span>
@@ -503,8 +515,9 @@ document.write(`
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">RingParam</span><span class="p">):</span>
             <span class="n">ringparams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">elem</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_param_ignore</span><span class="p">:</span>
-                    <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">_m2p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+                <span class="n">k2</span> <span class="o">=</span> <span class="n">_m2p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">k2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">keep_all</span><span class="p">:</span>
                 <span class="n">pars</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">pars</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;FamName&quot;</span><span class="p">)</span>
@@ -526,9 +539,10 @@ document.write(`
 <span class="sd">        filename:           Name of a &#39;.mat&#39; file</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        mat_key (str):      Name of the Matlab variable containing</span>
-<span class="sd">          the lattice. Default: Matlab variable name if there is only one,</span>
-<span class="sd">          otherwise &#39;RING&#39;</span>
+<span class="sd">        use (str):          Name of the Matlab variable containing</span>
+<span class="sd">          the lattice. Default: it there is a single variable, use it, otherwise</span>
+<span class="sd">          select &#39;RING&#39;</span>
+<span class="sd">        mat_key (str):      deprecated alias for *use*</span>
 <span class="sd">        check (bool):       Run the coherence tests. Default:</span>
 <span class="sd">          :py:obj:`True`</span>
 <span class="sd">        quiet (bool):       Suppress the warning for non-standard</span>
@@ -551,10 +565,12 @@ document.write(`
 <span class="sd">        :py:func:`.load_lattice` for a generic lattice-loading function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="s2">&quot;key&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>  <span class="c1"># process the deprecated &#39;key&#39; keyword</span>
-        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;mat_key&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">))</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;use&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s2">&quot;mat_key&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>  <span class="c1"># process the deprecated &#39;mat_key&#39; keyword</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;use&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;mat_key&quot;</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span>
         <span class="n">ringparam_filter</span><span class="p">,</span>
-        <span class="n">matfile_generator</span><span class="p">,</span>
+        <span class="n">_matfile_generator</span><span class="p">,</span>
         <span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span>
         <span class="n">iterator</span><span class="o">=</span><span class="n">params_filter</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
@@ -562,32 +578,69 @@ document.write(`
 
 
 
-<span class="k">def</span> <span class="nf">mfile_generator</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">m_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Element</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run through the lines of a Matlab m-file and generate AT elements</span>
+<span class="k">def</span> <span class="nf">_element_from_m</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Element</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds an :py:class:`.Element` from a line in an m-file</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        params:         Lattice building parameters (see :py:class:`.Lattice`)</span>
-<span class="sd">        m_file:         File name</span>
+<span class="sd">        line:           Matlab string representation of an :py:class:`.Element`</span>
 
-<span class="sd">    Yields:</span>
-<span class="sd">        elem (Element): new Elements</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        elem (Element): new :py:class:`.Element`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;m_file&quot;</span><span class="p">,</span> <span class="n">m_file</span><span class="p">),</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># Matlab function definition</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># Cell array opening</span>
-        <span class="k">for</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;};&quot;</span><span class="p">):</span>
-                <span class="k">break</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">elem</span> <span class="o">=</span> <span class="n">element_from_m</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s2">&quot;Invalid line </span><span class="si">{0}</span><span class="s2"> skipped.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lineno</span><span class="p">)))</span>
-                <span class="k">continue</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s2">&quot;Line </span><span class="si">{0}</span><span class="s2">: Unknown class.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lineno</span><span class="p">)))</span>
-                <span class="k">continue</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="n">elem</span>
+
+    <span class="k">def</span> <span class="nf">argsplit</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">makedir</span><span class="p">(</span><span class="n">mat_struct</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build directory from Matlab struct arguments&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">pairs</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">a</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="k">yield</span> <span class="nb">eval</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">convert</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pairs</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">mat_struct</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">makearray</span><span class="p">(</span><span class="n">mat_arr</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build numpy array for Matlab array syntax&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">arraystr</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+            <span class="n">lns</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+            <span class="n">rr</span> <span class="o">=</span> <span class="p">[</span><span class="n">arraystr</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">lns</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">lns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rr</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+        <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;array(</span><span class="si">{</span><span class="n">arraystr</span><span class="p">(</span><span class="n">mat_arr</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;convert Matlab syntax to numpy syntax&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">makearray</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;struct&quot;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">makedir</span><span class="p">(</span><span class="n">argsplit</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="n">left</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    <span class="n">matcls</span> <span class="o">=</span> <span class="n">line</span><span class="p">[:</span><span class="n">left</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()[</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="bp">cls</span> <span class="o">=</span> <span class="n">_CLASS_MAP</span><span class="p">[</span><span class="n">matcls</span><span class="p">]</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">argsplit</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">right</span><span class="p">])</span>
+    <span class="n">ll</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ll</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="ow">and</span> <span class="n">arguments</span><span class="p">[</span><span class="n">ll</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Pass&#39;&quot;</span><span class="p">):</span>
+        <span class="n">arguments</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">ll</span><span class="p">,</span> <span class="s2">&quot;&#39;PassMethod&#39;&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">convert</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">[:</span><span class="n">ll</span><span class="p">]]</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">makedir</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="n">ll</span><span class="p">:])</span>
+    <span class="k">if</span> <span class="n">matcls</span> <span class="o">==</span> <span class="s2">&quot;rbend&quot;</span><span class="p">:</span>
+        <span class="c1"># the Matlab &#39;rbend&#39; has no equivalent in PyAT. This adds parameters</span>
+        <span class="c1"># necessary for using the python sector bend</span>
+        <span class="n">halfangle</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;EntranceAngle&quot;</span><span class="p">,</span> <span class="n">halfangle</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;ExitAngle&quot;</span><span class="p">,</span> <span class="n">halfangle</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="load_m">
@@ -616,6 +669,26 @@ document.write(`
 <span class="sd">    See Also:</span>
 <span class="sd">        :py:func:`.load_lattice` for a generic lattice-loading function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">mfile_generator</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">m_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Element</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run through the lines of a Matlab m-file and generate AT elements&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;in_file&quot;</span><span class="p">,</span> <span class="n">m_file</span><span class="p">),</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># Matlab function definition</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>  <span class="c1"># Cell array opening</span>
+            <span class="k">for</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;};&quot;</span><span class="p">):</span>
+                    <span class="k">break</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">elem</span> <span class="o">=</span> <span class="n">_element_from_m</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s2">&quot;Invalid line </span><span class="si">{0}</span><span class="s2"> skipped.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lineno</span><span class="p">)))</span>
+                    <span class="k">continue</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s2">&quot;Line </span><span class="si">{0}</span><span class="s2">: Unknown class.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lineno</span><span class="p">)))</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">elem</span>
+
     <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span>
         <span class="n">ringparam_filter</span><span class="p">,</span>
         <span class="n">mfile_generator</span><span class="p">,</span>
@@ -653,7 +726,7 @@ document.write(`
     <span class="c1"># noinspection PyUnusedLocal</span>
     <span class="k">def</span> <span class="nf">var_generator</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">latt</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">latt</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">element_from_dict</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">Element</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span>
         <span class="n">ringparam_filter</span><span class="p">,</span> <span class="n">var_generator</span><span class="p">,</span> <span class="n">matlat</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="n">params_filter</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
@@ -668,45 +741,103 @@ document.write(`
         <span class="c1"># Public lattice attributes</span>
         <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">))</span>
         <span class="c1"># Output the required attributes/properties</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">_p2m</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">kp</span><span class="p">,</span> <span class="n">km</span> <span class="ow">in</span> <span class="n">_p2m</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">v</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">kp</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="k">yield</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span>
+                <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">kp</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">km</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">km</span><span class="p">,</span> <span class="n">v</span>
         <span class="c1"># Output the remaining attributes</span>
         <span class="k">yield from</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
 
     <span class="n">dct</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="p">(</span><span class="n">ring</span><span class="p">))</span>
     <span class="k">yield</span> <span class="n">RingParam</span><span class="p">(</span><span class="o">**</span><span class="n">dct</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
-            <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Marker</span><span class="p">)</span>
-            <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;RingParam&quot;</span>
-        <span class="p">):</span>
-            <span class="k">yield</span> <span class="n">elem</span>
+    <span class="k">yield from</span> <span class="n">keep_elements</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="save_mat">
 <a class="viewcode-back" href="../../../p/api/at.load.matfile.html#at.load.matfile.save_mat">[docs]</a>
-<span class="k">def</span> <span class="nf">save_mat</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mat_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RING&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">save_mat</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a :py:class:`.Lattice` as a Matlab mat-file</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        ring:           Lattice description</span>
-<span class="sd">        filename:       Name of the &#39;.mat&#39; file</span>
-<span class="sd">        mat_key (str):  Name of the Matlab variable containing</span>
-<span class="sd">          the lattice. Default: ``&#39;RING&#39;``</span>
+<span class="sd">        ring:       Lattice description</span>
+<span class="sd">        filename:   Name of the &#39;.mat&#39; file</span>
+
+<span class="sd">    Keyword Args:</span>
+<span class="sd">        use (str):  Name of the Matlab variable containing the lattice, Default: &quot;RING&quot;</span>
+<span class="sd">        mat_key (str): Deprecated, alias for *use*</span>
 
 <span class="sd">    See Also:</span>
 <span class="sd">        :py:func:`.save_lattice` for a generic lattice-saving function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lring</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">((</span><span class="n">element_to_dict</span><span class="p">(</span><span class="n">elem</span><span class="p">),)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">matlab_ring</span><span class="p">(</span><span class="n">ring</span><span class="p">))</span>
-    <span class="c1"># noinspection PyUnresolvedReferences</span>
-    <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">savemat</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">{</span><span class="n">mat_key</span><span class="p">:</span> <span class="n">lring</span><span class="p">},</span> <span class="n">long_field_names</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+    <span class="c1"># Ensure the lattice is a Matlab column vector: list(list)</span>
+    <span class="n">use</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;mat_key&quot;</span><span class="p">,</span> <span class="s2">&quot;RING&quot;</span><span class="p">)</span>  <span class="c1"># For backward compatibility</span>
+    <span class="n">use</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;use&quot;</span><span class="p">,</span> <span class="n">use</span><span class="p">)</span>
+    <span class="n">lring</span> <span class="o">=</span> <span class="p">[[</span><span class="n">el</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">_mat_encoder</span><span class="p">)]</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">matlab_ring</span><span class="p">(</span><span class="n">ring</span><span class="p">)]</span>
+    <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">savemat</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">{</span><span class="n">use</span><span class="p">:</span> <span class="n">lring</span><span class="p">},</span> <span class="n">long_field_names</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
+
+
+<span class="k">def</span> <span class="nf">_element_to_m</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds the Matlab-evaluable string for an :py:class:`.Element`</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        elem:           :py:class:`.Element`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        mstr (str):     Matlab string representation of the</span>
+<span class="sd">          :py:class:`.Element` attributes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">convert_dict</span><span class="p">(</span><span class="n">pdir</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">yield</span> <span class="n">convert</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">convert</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="s2">&quot;struct(</span><span class="si">{0}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">scan</span><span class="p">(</span><span class="n">pdir</span><span class="p">)))</span>
+
+        <span class="k">def</span> <span class="nf">convert_array</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">lns</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ln</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">)</span>
+                <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lns</span><span class="p">),</span> <span class="s2">&quot;]&quot;</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">convert_array</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">convert_dict</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Particle</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">convert_dict</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">m_name</span><span class="p">(</span><span class="n">elclass</span><span class="p">):</span>
+        <span class="n">classname</span> <span class="o">=</span> <span class="n">elclass</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="k">return</span> <span class="n">_mat_constructor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">classname</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="n">classname</span><span class="o">.</span><span class="n">lower</span><span class="p">())))</span>
+
+    <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="c1"># noinspection PyProtectedMember</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">elem</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span><span class="p">]</span>
+    <span class="n">defelem</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">kwds</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">defelem</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">argstrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">convert</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="k">if</span> <span class="s2">&quot;PassMethod&quot;</span> <span class="ow">in</span> <span class="n">kwds</span><span class="p">:</span>
+        <span class="n">argstrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">convert</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;PassMethod&quot;</span><span class="p">)))</span>
+    <span class="n">argstrs</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="nb">repr</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">convert</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwds</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{0:&gt;15}</span><span class="s2">(</span><span class="si">{1}</span><span class="s2">);...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m_name</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="vm">__class__</span><span class="p">),</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">argstrs</span><span class="p">))</span>
 
 
 <div class="viewcode-block" id="save_m">
@@ -726,7 +857,7 @@ document.write(`
     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ring = {...&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">matlab_ring</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">element_to_m</span><span class="p">(</span><span class="n">elem</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">_element_to_m</span><span class="p">(</span><span class="n">elem</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;};&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -740,8 +871,45 @@ document.write(`
 
 
 
-<span class="n">register_format</span><span class="p">(</span><span class="s2">&quot;.mat&quot;</span><span class="p">,</span> <span class="n">load_mat</span><span class="p">,</span> <span class="n">save_mat</span><span class="p">,</span> <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Matlab binary mat-file&quot;</span><span class="p">)</span>
-<span class="n">register_format</span><span class="p">(</span><span class="s2">&quot;.m&quot;</span><span class="p">,</span> <span class="n">load_m</span><span class="p">,</span> <span class="n">save_m</span><span class="p">,</span> <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Matlab text m-file&quot;</span><span class="p">)</span>
+<span class="c1"># Simulates the deprecated &quot;mat_file&quot; and &quot;mat_key&quot; attributes</span>
+<span class="k">def</span> <span class="nf">_mat_file</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;.mat input file. Deprecated, use *in_file* instead.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">in_file</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">in_file</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;&#39;Lattice&#39; object has no attribute &#39;mat_file&#39;&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ext</span> <span class="o">!=</span> <span class="s2">&quot;.mat&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;&#39;Lattice&#39; object has no attribute &#39;mat_file&#39;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">in_file</span>
+
+
+<span class="k">def</span> <span class="nf">_mat_key</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;selected Matlab variable. Deprecated, use *use* instead.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mat_key</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">use</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;&#39;Lattice&#39; object has no attribute &#39;mat_key&#39;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mat_key</span>
+
+
+<span class="n">register_format</span><span class="p">(</span>
+    <span class="s2">&quot;.mat&quot;</span><span class="p">,</span>
+    <span class="n">load_mat</span><span class="p">,</span>
+    <span class="n">save_mat</span><span class="p">,</span>
+    <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Matlab binary mat-file. See :py:func:`.load_mat`.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">register_format</span><span class="p">(</span>
+    <span class="s2">&quot;.m&quot;</span><span class="p">,</span>
+    <span class="n">load_m</span><span class="p">,</span>
+    <span class="n">save_m</span><span class="p">,</span>
+    <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Matlab text m-file. See :py:func:`.load_m`.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">Lattice</span><span class="o">.</span><span class="n">mat_file</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_mat_file</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">mat_key</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_mat_key</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 
                 </article>
@@ -750,7 +918,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -759,8 +927,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -773,8 +939,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -807,7 +973,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
 </p></div>
       
     </div>

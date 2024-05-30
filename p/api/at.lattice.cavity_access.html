@@ -14,19 +14,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -35,9 +35,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../../_static/documentation_options.js?v=037dbd9b"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -59,27 +59,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -101,12 +97,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -142,26 +143,26 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -233,9 +234,9 @@ document.write(`
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
@@ -256,32 +257,35 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -340,7 +344,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
@@ -355,16 +359,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variable_elements.html">at.lattice.variable_elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variables.html">at.lattice.variables</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.physics.html">at.physics</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.physics.html">at.physics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.amat.html">at.physics.amat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
@@ -379,42 +383,43 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.physics.revolution.html">at.physics.revolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.ring_parameters.html">at.physics.ring_parameters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.load.html">at.load</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.load.html">at.load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.json.html">at.load.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.utils.html">at.load.utils</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.matching.html">at.matching</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.matching.html">at.matching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.matching.globalfit.html">at.matching.globalfit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.matching.matching.html">at.matching.matching</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.acceptance.html">at.acceptance</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.acceptance.html">at.acceptance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.acceptance.acceptance.html">at.acceptance.acceptance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.acceptance.boundary.html">at.acceptance.boundary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.acceptance.touschek.html">at.acceptance.touschek</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.collective.html">at.collective</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.collective.html">at.collective</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.beam_loading.html">at.collective.beam_loading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.haissinski.html">at.collective.haissinski</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_elements.html">at.collective.wake_elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_functions.html">at.collective.wake_functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_object.html">at.collective.wake_object</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.plot.html">at.plot</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.plot.html">at.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.generic.html">at.plot.generic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.specific.html">at.plot.specific</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.standalone.html">at.plot.standalone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.synopt.html">at.plot.synopt</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="at.constants.html">at.constants</a></li>
 </ul>
 </div>
@@ -430,13 +435,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -445,7 +450,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -480,7 +485,7 @@ document.write(`
 <span id="at-lattice-cavity-access"></span><h1>at.lattice.cavity_access<a class="headerlink" href="#module-at.lattice.cavity_access" title="Link to this heading">#</a></h1>
 <p>Access to properties of RF cavities</p>
 <p class="rubric">Functions</p>
-<table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.cavity_access.frequency_control" title="at.lattice.cavity_access.frequency_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frequency_control</span></code></a>(func)</p></td>
 <td><p>Function to be used as decorator for <code class="code highlight pycode python docutils literal highlight-python"><span class="n">func</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code></p></td>
@@ -505,14 +510,16 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p class="rubric">Classes</p>
-<table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.cavity_access.Frf" title="at.lattice.cavity_access.Frf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Frf</span></code></a>(value)</p></td>
 <td><p>Enum class for frequency setting</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.cavity_access.Frf">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Frf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/cavity_access.html#Frf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.cavity_access.Frf" title="Link to this definition">#</a></dt>
@@ -702,7 +709,7 @@ cavity elements. Otherwise, modify <code class="docutils literal notranslate"><s
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -768,8 +775,8 @@ cavity elements. Otherwise, modify <code class="docutils literal notranslate"><s
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -802,7 +809,7 @@ cavity elements. Otherwise, modify <code class="docutils literal notranslate"><s
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
 </p></div>
       
     </div>

@@ -13,19 +13,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -34,9 +34,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../../../_static/documentation_options.js?v=037dbd9b"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -56,27 +56,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -98,12 +94,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -139,26 +140,26 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../p/index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -251,32 +252,35 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../p/index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -325,13 +329,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -340,7 +344,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -690,26 +694,17 @@ document.write(`
             <span class="nb">super</span><span class="p">(</span><span class="n">Element</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">first3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FamName&quot;</span><span class="p">,</span> <span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="s2">&quot;PassMethod&quot;</span><span class="p">]</span>
-        <span class="c1"># Get values and parameter objects</span>
-        <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">!s}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">first3</span><span class="p">]</span>
-        <span class="n">keywords</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">v</span><span class="si">!s}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keywords</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">!s}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+        <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Get values only, even for parameters</span>
-        <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span><span class="p">]</span>
-        <span class="n">defelem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
-        <span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">!r}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">]</span>
-        <span class="n">keywords</span> <span class="o">+=</span> <span class="p">[</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">!r}</span><span class="s2">&quot;</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">defelem</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-        <span class="p">]</span>
+        <span class="n">clsname</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">definition</span>
+        <span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">arg</span><span class="si">!r}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+        <span class="n">keywords</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">!r}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
         <span class="n">args</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\n\s*&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keywords</span><span class="p">))</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">(</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">clsname</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">)&quot;</span>
 
 <div class="viewcode-block" id="Element.equals">
 <a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Element.equals">[docs]</a>
@@ -805,12 +800,30 @@ document.write(`
         <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">definition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;tuple (class_name, args, kwargs) defining the element&quot;&quot;&quot;</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span>
+            <span class="n">k</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
+        <span class="p">)</span>
+        <span class="n">defelem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+        <span class="n">keywords</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">defelem</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">keywords</span>
+
 <div class="viewcode-block" id="Element.items">
 <a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Element.items">[docs]</a>
     <span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterates through the data members&quot;&quot;&quot;</span>
-        <span class="c1"># Properties may be added by overloading this method</span>
-        <span class="k">yield from</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;FamName&quot;</span><span class="p">,</span> <span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="s2">&quot;PassMethod&quot;</span><span class="p">]:</span>
+            <span class="k">yield</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">yield</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span></div>
 
 
 <div class="viewcode-block" id="Element.is_compatible">
@@ -1932,7 +1945,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1941,8 +1954,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -1955,8 +1966,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1989,7 +2000,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
 </p></div>
       
     </div>

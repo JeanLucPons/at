@@ -14,19 +14,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -35,9 +35,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../../_static/documentation_options.js?v=037dbd9b"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -59,27 +59,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -101,12 +97,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -142,26 +143,26 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -233,9 +234,9 @@ document.write(`
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
@@ -256,32 +257,35 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../common/indx.html">
-                        AT basics
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../index.html">
-                        Python
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../m/index.html">
-                        Matlab
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../m/index.html">
+    Matlab
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -340,7 +344,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
@@ -355,16 +359,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variable_elements.html">at.lattice.variable_elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variables.html">at.lattice.variables</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.physics.html">at.physics</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.physics.html">at.physics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.amat.html">at.physics.amat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
@@ -379,42 +383,43 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.physics.revolution.html">at.physics.revolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.ring_parameters.html">at.physics.ring_parameters</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.load.html">at.load</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.load.html">at.load</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.json.html">at.load.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.load.utils</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.matching.html">at.matching</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.matching.html">at.matching</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.matching.globalfit.html">at.matching.globalfit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.matching.matching.html">at.matching.matching</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.acceptance.html">at.acceptance</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.acceptance.html">at.acceptance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.acceptance.acceptance.html">at.acceptance.acceptance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.acceptance.boundary.html">at.acceptance.boundary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.acceptance.touschek.html">at.acceptance.touschek</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.collective.html">at.collective</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.collective.html">at.collective</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.beam_loading.html">at.collective.beam_loading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.haissinski.html">at.collective.haissinski</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_elements.html">at.collective.wake_elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_functions.html">at.collective.wake_functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_object.html">at.collective.wake_object</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.plot.html">at.plot</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.plot.html">at.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.generic.html">at.plot.generic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.specific.html">at.plot.specific</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.standalone.html">at.plot.standalone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.plot.synopt.html">at.plot.synopt</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="at.constants.html">at.constants</a></li>
 </ul>
 </div>
@@ -430,13 +435,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -445,7 +450,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -480,45 +485,49 @@ document.write(`
 <span id="at-load-utils"></span><h1>at.load.utils<a class="headerlink" href="#module-at.load.utils" title="Link to this heading">#</a></h1>
 <p>Conversion utilities for creating pyat elements</p>
 <p class="rubric">Functions</p>
-<table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.element_from_dict" title="at.load.utils.element_from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_from_dict</span></code></a>(elem_dict[, index, check, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.element_classes" title="at.load.utils.element_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_classes</span></code></a>()</p></td>
+<td><p>Build a set of all Element subclasses</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.element_from_dict" title="at.load.utils.element_from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_from_dict</span></code></a>(elem_dict[, index, check, ...])</p></td>
 <td><p>Builds an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> from a dictionary of attributes</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.element_from_m" title="at.load.utils.element_from_m"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_from_m</span></code></a>(line)</p></td>
-<td><p>Builds an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> from a line in an m-file</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.element_from_string" title="at.load.utils.element_from_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_from_string</span></code></a>(elem_string)</p></td>
-<td><p>Builds an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> from its python <a class="reference external" href="https://docs.python.org/3/library/functions.html#repr" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> string</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.element_to_dict" title="at.load.utils.element_to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_to_dict</span></code></a>(elem)</p></td>
-<td><p>Builds the Matlab structure of an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.element_to_m" title="at.load.utils.element_to_m"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_to_m</span></code></a>(elem)</p></td>
-<td><p>Builds the Matlab-evaluable string for an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.element_to_dict" title="at.load.utils.element_to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">element_to_dict</span></code></a>(elem[, encoder])</p></td>
+<td><p>Convert a <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> to a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.find_class" title="at.load.utils.find_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_class</span></code></a>(elem_dict[, quiet, index])</p></td>
-<td><p>Identify the class of an element from its attributes</p></td>
+<td><p>Deduce the class of an element from its attributes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.find_class_name" title="at.load.utils.find_class_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_class_name</span></code></a>(elem_dict[, quiet])</p></td>
-<td><p>Derive the class name of an Element from its attributes</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.keep_elements" title="at.load.utils.keep_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keep_elements</span></code></a>(ring)</p></td>
+<td><p>Remove the 'RingParam' Marker</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.hasattrs" title="at.load.utils.hasattrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hasattrs</span></code></a>(kwargs, *attributes)</p></td>
-<td><p>Checks the presence of keys in a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.keep_attributes" title="at.load.utils.keep_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keep_attributes</span></code></a>(ring)</p></td>
+<td><p>Remove Lattice attributes which must not be saved on file</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.split_ignoring_parentheses" title="at.load.utils.split_ignoring_parentheses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_ignoring_parentheses</span></code></a>(string, delimiter)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.split_ignoring_parentheses" title="at.load.utils.split_ignoring_parentheses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_ignoring_parentheses</span></code></a>(string[, delimiter])</p></td>
+<td><p>Split a string while keeping parenthesized expressions intact</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p class="rubric">Classes</p>
-<table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RingParam</span></code>(name, energy[, periodicity, particle])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RingParam</span></code>(FamName, Energy, Periodicity, **kwargs)</p></td>
 <td><p>Private class for Matlab RingParam element</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.utils.element_classes">
+<span class="sig-name descname"><span class="pre">element_classes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_classes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_classes" title="Link to this definition">#</a></dt>
+<dd><p>Build a set of all Element subclasses</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="at.load.utils.element_from_dict">
 <span class="sig-name descname"><span class="pre">element_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_from_dict" title="Link to this definition">#</a></dt>
@@ -539,40 +548,15 @@ document.write(`
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="at.load.utils.element_from_m">
-<span class="sig-name descname"><span class="pre">element_from_m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_from_m"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_from_m" title="Link to this definition">#</a></dt>
-<dd><p>Builds an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> from a line in an m-file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Matlab string representation of an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>elem</strong> (<em>Element</em>) – new <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="at.load.utils.element_from_string">
-<span class="sig-name descname"><span class="pre">element_from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_from_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_from_string" title="Link to this definition">#</a></dt>
-<dd><p>Builds an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> from its python <a class="reference external" href="https://docs.python.org/3/library/functions.html#repr" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> string</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>elem_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – String representation of an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>elem</strong> (<em>Element</em>) – new <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="at.load.utils.element_to_dict">
-<span class="sig-name descname"><span class="pre">element_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_to_dict" title="Link to this definition">#</a></dt>
-<dd><p>Builds the Matlab structure of an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<span class="sig-name descname"><span class="pre">element_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder=&lt;function</span> <span class="pre">_no_encoder&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_to_dict" title="Link to this definition">#</a></dt>
+<dd><p>Convert a <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> to a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>elem</strong> (<a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a>) – <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elem</strong> (<a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a>) – <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p></li>
+<li><p><strong>encoder</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><em>Any</em></a><em>]</em>) – data converter</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>dct</strong> (<em>dict</em>) – Dictionary of <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> attributes</p>
@@ -581,24 +565,11 @@ document.write(`
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="at.load.utils.element_to_m">
-<span class="sig-name descname"><span class="pre">element_to_m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#element_to_m"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.element_to_m" title="Link to this definition">#</a></dt>
-<dd><p>Builds the Matlab-evaluable string for an <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>elem</strong> (<a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a>) – <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>mstr</strong> (<em>str</em>) – Matlab string representation of the
-<a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> attributes</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="at.load.utils.find_class">
 <span class="sig-name descname"><span class="pre">find_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#find_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.find_class" title="Link to this definition">#</a></dt>
-<dd><p>Identify the class of an element from its attributes</p>
+<dd><p>Deduce the class of an element from its attributes</p>
+<p><cite>find_class</cite> looks first at the “Class” field, if existing. It then tries to deduce
+the class from “FamName”, from “PassMethod”, and finally form the element contents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -615,35 +586,29 @@ Element constructor.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="at.load.utils.find_class_name">
-<span class="sig-name descname"><span class="pre">find_class_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#find_class_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.find_class_name" title="Link to this definition">#</a></dt>
-<dd><p>Derive the class name of an Element from its attributes</p>
+<dt class="sig sig-object py" id="at.load.utils.keep_attributes">
+<span class="sig-name descname"><span class="pre">keep_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#keep_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.keep_attributes" title="Link to this definition">#</a></dt>
+<dd><p>Remove Lattice attributes which must not be saved on file</p>
+<dl class="field-list simple">
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="at.load.utils.hasattrs">
-<span class="sig-name descname"><span class="pre">hasattrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">attributes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#hasattrs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.hasattrs" title="Link to this definition">#</a></dt>
-<dd><p>Checks the presence of keys in a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
-<p>Returns <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if any of the <code class="docutils literal notranslate"><span class="pre">attributes</span></code> is in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code></p>
+<dt class="sig sig-object py" id="at.load.utils.keep_elements">
+<span class="sig-name descname"><span class="pre">keep_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#keep_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.keep_elements" title="Link to this definition">#</a></dt>
+<dd><p>Remove the ‘RingParam’ Marker</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – The dictionary of keyword arguments passed to the
-Element constructor.</p></li>
-<li><p><strong>attributes</strong> – A list of strings, the attribute names to be checked.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>found</strong> (<em>bool</em>) – <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the element has any of the specified
-attributes.</p>
-</dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.load.utils.split_ignoring_parentheses">
-<span class="sig-name descname"><span class="pre">split_ignoring_parentheses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#split_ignoring_parentheses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.split_ignoring_parentheses" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">split_ignoring_parentheses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#split_ignoring_parentheses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.split_ignoring_parentheses" title="Link to this definition">#</a></dt>
+<dd><p>Split a string while keeping parenthesized expressions intact</p>
+<p>Example: “l=0,hom(4,0.0,0)” -&gt; [“l=0”, “hom(4,0.0,0)”]</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
 
 </section>
 
@@ -654,7 +619,7 @@ attributes.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -693,14 +658,12 @@ attributes.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.element_classes"><code class="docutils literal notranslate"><span class="pre">element_classes()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.element_from_dict"><code class="docutils literal notranslate"><span class="pre">element_from_dict()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.element_from_m"><code class="docutils literal notranslate"><span class="pre">element_from_m()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.element_from_string"><code class="docutils literal notranslate"><span class="pre">element_from_string()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.element_to_dict"><code class="docutils literal notranslate"><span class="pre">element_to_dict()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.element_to_m"><code class="docutils literal notranslate"><span class="pre">element_to_m()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.find_class"><code class="docutils literal notranslate"><span class="pre">find_class()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.find_class_name"><code class="docutils literal notranslate"><span class="pre">find_class_name()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.hasattrs"><code class="docutils literal notranslate"><span class="pre">hasattrs()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.keep_attributes"><code class="docutils literal notranslate"><span class="pre">keep_attributes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.keep_elements"><code class="docutils literal notranslate"><span class="pre">keep_elements()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.split_ignoring_parentheses"><code class="docutils literal notranslate"><span class="pre">split_ignoring_parentheses()</span></code></a></li>
 </ul>
   </nav></div>
@@ -718,8 +681,8 @@ attributes.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -752,7 +715,7 @@ attributes.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
 </p></div>
       
     </div>
