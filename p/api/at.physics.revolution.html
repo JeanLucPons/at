@@ -488,7 +488,7 @@ document.write(`
 <p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.revolution.get_mcf" title="at.physics.revolution.get_mcf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mcf</span></code></a>(ring[, dp, keep_lattice])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.revolution.get_mcf" title="at.physics.revolution.get_mcf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mcf</span></code></a>(ring[, dp, keep_lattice, fit_order, ...])</p></td>
 <td><p>Compute the momentum compaction factor <span class="math notranslate nohighlight">\(\alpha\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.physics.revolution.get_slip_factor" title="at.physics.revolution.get_slip_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_slip_factor</span></code></a>(ring, **kwargs)</p></td>
@@ -505,7 +505,7 @@ document.write(`
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.revolution.get_mcf">
-<span class="sig-name descname"><span class="pre">get_mcf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_lattice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/revolution.html#get_mcf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.revolution.get_mcf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_mcf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_lattice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/revolution.html#get_mcf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.revolution.get_mcf" title="Link to this definition">#</a></dt>
 <dd><p>Compute the momentum compaction factor <span class="math notranslate nohighlight">\(\alpha\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -515,6 +515,11 @@ document.write(`
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em> | </em><em>None</em>) – Momentum deviation. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Assume no lattice change since the previous tracking.
 Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>fit_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum momentum compaction factor order to be fitted.
+Default to 1, corresponding to the first-order momentum compaction factor.</p></li>
+<li><p><strong>n_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Number of different calculated momentum deviations to be fitted
+with a polynomial.
+Default to 2.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -522,7 +527,9 @@ Default: <a class="reference external" href="https://docs.python.org/3/library/c
 Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.options.DConstant" title="at.lattice.options.DConstant"><code class="xref py py-data docutils literal notranslate"><span class="pre">DConstant.DPStep</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mcf</strong> (<em>float</em>) – Momentum compaction factor <span class="math notranslate nohighlight">\(\alpha\)</span></p>
+<dd class="field-odd"><p><strong>mcf</strong> (<em>float/array</em>) – Momentum compaction factor <span class="math notranslate nohighlight">\(\alpha\)</span>
+up to the order fit_order. Returns a float if fit_order=1 otherwise
+returns an array.</p>
 </dd>
 </dl>
 </dd></dl>
