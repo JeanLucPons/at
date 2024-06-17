@@ -484,7 +484,7 @@ document.write(`
         <span class="n">beta</span> <span class="o">=</span> <span class="n">m22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">sinmu</span>
         <span class="k">return</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">cosmu</span> <span class="o">+</span> <span class="n">sinmu</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>          <span class="c1"># Unstable motion</span>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 
 
 <span class="c1"># noinspection PyShadowingNames,PyPep8Naming</span>
@@ -502,7 +502,7 @@ document.write(`
     <span class="k">except</span> <span class="n">AtError</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s1">&#39;Unstable ring&#39;</span><span class="p">))</span>
         <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
-        <span class="n">tunes</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="n">tunes</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
     <span class="k">return</span> <span class="n">tunes</span>
 
 
@@ -884,7 +884,7 @@ document.write(`
                          <span class="p">(</span><span class="s1">&#39;s_pos&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)]</span>
         <span class="n">data0</span> <span class="o">=</span> <span class="p">(</span><span class="n">d0</span><span class="p">,</span> <span class="n">orb0</span><span class="p">,</span> <span class="n">mt</span><span class="p">,</span> <span class="n">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">datas</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">orbs</span><span class="p">,</span> <span class="n">ms</span><span class="p">,</span> <span class="n">spos</span><span class="p">)</span>
-        <span class="n">damping_times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="n">damping_times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 
     <span class="k">if</span> <span class="n">get_w</span><span class="p">:</span>
         <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span> <span class="o">+</span> <span class="n">wtype</span>
@@ -898,7 +898,7 @@ document.write(`
         <span class="n">deltap</span> <span class="o">=</span> <span class="n">o0up</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">o0dn</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
         <span class="n">chrom</span> <span class="o">=</span> <span class="p">(</span><span class="n">tunesup</span> <span class="o">-</span> <span class="n">tunesdn</span><span class="p">)</span> <span class="o">/</span> <span class="n">deltap</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">chrom</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="n">chrom</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 
     <span class="n">beamdata</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">tunes</span><span class="p">,</span> <span class="n">chrom</span><span class="p">,</span> <span class="n">damping_times</span><span class="p">),</span>
                            <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;tune&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="p">(</span><span class="n">dms</span><span class="p">,)),</span>
