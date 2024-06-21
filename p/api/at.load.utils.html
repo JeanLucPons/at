@@ -505,8 +505,14 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.keep_attributes" title="at.load.utils.keep_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keep_attributes</span></code></a>(ring)</p></td>
 <td><p>Remove Lattice attributes which must not be saved on file</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.split_ignoring_parentheses" title="at.load.utils.split_ignoring_parentheses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_ignoring_parentheses</span></code></a>(string[, delimiter])</p></td>
-<td><p>Split a string while keeping parenthesized expressions intact</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.split_ignoring_parentheses" title="at.load.utils.split_ignoring_parentheses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_ignoring_parentheses</span></code></a>(string[, ...])</p></td>
+<td><p>Split a string while keeping protected expressions intact</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.utils.protect" title="at.load.utils.protect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">protect</span></code></a>(string[, fence])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.utils.restore" title="at.load.utils.restore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore</span></code></a>(matches, *parts)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -602,9 +608,21 @@ Element constructor.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="at.load.utils.protect">
+<span class="sig-name descname"><span class="pre">protect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('&quot;',</span> <span class="pre">'&quot;')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#protect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.protect" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.utils.restore">
+<span class="sig-name descname"><span class="pre">restore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matches</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">parts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#restore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.restore" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="at.load.utils.split_ignoring_parentheses">
-<span class="sig-name descname"><span class="pre">split_ignoring_parentheses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#split_ignoring_parentheses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.split_ignoring_parentheses" title="Link to this definition">#</a></dt>
-<dd><p>Split a string while keeping parenthesized expressions intact</p>
+<span class="sig-name descname"><span class="pre">split_ignoring_parentheses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('\\(',</span> <span class="pre">'\\)')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/utils.html#split_ignoring_parentheses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.utils.split_ignoring_parentheses" title="Link to this definition">#</a></dt>
+<dd><p>Split a string while keeping protected expressions intact</p>
 <p>Example: “l=0,hom(4,0.0,0)” -&gt; [“l=0”, “hom(4,0.0,0)”]</p>
 <dl class="field-list simple">
 </dl>
@@ -664,6 +682,8 @@ Element constructor.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.find_class"><code class="docutils literal notranslate"><span class="pre">find_class()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.keep_attributes"><code class="docutils literal notranslate"><span class="pre">keep_attributes()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.keep_elements"><code class="docutils literal notranslate"><span class="pre">keep_elements()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.protect"><code class="docutils literal notranslate"><span class="pre">protect()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.restore"><code class="docutils literal notranslate"><span class="pre">restore()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.utils.split_ignoring_parentheses"><code class="docutils literal notranslate"><span class="pre">split_ignoring_parentheses()</span></code></a></li>
 </ul>
   </nav></div>
