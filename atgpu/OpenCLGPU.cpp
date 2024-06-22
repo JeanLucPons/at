@@ -77,7 +77,8 @@ OpenCLContext::OpenCLContext(OCL_GPU_INFO *gpu)  {
   if(!context)
     openCLCheckCall("clCreateContext",err);
 
-  commands = clCreateCommandQueueWithProperties(context, device_id, nullptr, &err);
+//  commands = clCreateCommandQueueWithProperties(context, device_id, nullptr, &err);
+  commands = clCreateCommandQueueWithPropertiesAPPLE(context, device_id, nullptr, &err);
   if(!commands)
     openCLCheckCall("clCreateCommandQueue",err);
 
