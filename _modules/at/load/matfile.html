@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>at.load.matfile &#8212; Accelerator Toolbox 0.5.1 documentation</title>
+    <title>at.load.matfile &#8212; Accelerator Toolbox 0.7.dev1+gcb61c7aa documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../../_static/documentation_options.js?v=037dbd9b"></script>
+    <script src="../../../_static/documentation_options.js?v=f6cd39ce"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -124,8 +124,8 @@
       
     
     
-    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.5.1 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.5.1 documentation - Home"/>`);</script>
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.7.dev1+gcb61c7aa documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.7.dev1+gcb61c7aa documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -408,9 +408,13 @@ document.write(`
     <span class="s2">&quot;Particle&quot;</span><span class="p">:</span> <span class="s2">&quot;particle&quot;</span><span class="p">,</span>
     <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">:</span> <span class="s2">&quot;cell_harmnumber&quot;</span><span class="p">,</span>  <span class="c1"># necessary: property</span>
     <span class="s2">&quot;beam_current&quot;</span><span class="p">:</span> <span class="s2">&quot;beam_current&quot;</span><span class="p">,</span>  <span class="c1"># necessary: property</span>
-    <span class="s2">&quot;PassMethod&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;PassMethod&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># Useless Matlab attributes</span>
     <span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
     <span class="s2">&quot;cavpts&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;Mat_File&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># These are erroneous attributes saved in</span>
+    <span class="s2">&quot;Mat_Key&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># RingParam by old versions</span>
+    <span class="s2">&quot;Beam_Current&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;Nbunch&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">_p2m</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_m2p</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
 <span class="c1"># Attribute to drop when writing a file</span>
@@ -894,6 +898,10 @@ document.write(`
     <span class="k">return</span> <span class="n">mat_key</span>
 
 
+<span class="k">def</span> <span class="nf">_ignore</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
 <span class="n">register_format</span><span class="p">(</span>
     <span class="s2">&quot;.mat&quot;</span><span class="p">,</span>
     <span class="n">load_mat</span><span class="p">,</span>
@@ -908,8 +916,8 @@ document.write(`
     <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Matlab text m-file. See :py:func:`.load_m`.&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">Lattice</span><span class="o">.</span><span class="n">mat_file</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_mat_file</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">mat_key</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_mat_key</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">mat_file</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_mat_file</span><span class="p">,</span> <span class="n">_ignore</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">mat_key</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_mat_key</span><span class="p">,</span> <span class="n">_ignore</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </pre></div>
 
                 </article>
