@@ -1532,8 +1532,10 @@ document.write(`
     <span class="k">def</span> <span class="nf">get_strength</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">PolynomB</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mf">1.e-7</span><span class="p">:</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
-            <span class="n">k</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">return</span> <span class="n">k</span>
 
     <span class="k">def</span> <span class="nf">get_sext_strength</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
