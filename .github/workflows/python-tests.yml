@@ -37,6 +37,10 @@ jobs:
     - name: Build and install at with tests
       run: python -m pip install --config-settings opencl=1 -e ".[dev]"
 
+    - name: Detect GPU
+      working-directory: pyat
+      run: python test/display_gpu.py
+
     - name: Test GPU
       working-directory: pyat
       run: python test/test_gpu.py
