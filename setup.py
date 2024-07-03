@@ -27,6 +27,8 @@ def select_omp():
 print("** Entering setup.py:", str(sys.argv))
 print("** MPI:", os.environ.get('MPI', None))
 print("** OPENMP:", os.environ.get('OPENMP', None))
+print("** CUDA:", os.environ.get('CUDA', None))
+print("** OPENCL:", os.environ.get('OPENCL', None))
 macros = [('PYAT', None)]
 with_openMP = False
 
@@ -80,6 +82,57 @@ else:
         else:
             omp_lflags = ['-L' + omp_path, '-Wl,-rpath,' + omp_path, '-liomp5']
 
+
+cuda = eval(os.environ.get('CUDA', 'None'))
+if not cuda:
+    cuda_cppflags = []
+    cuda_lflags = []
+    cuda_macros = []
+else:
+    # Generate the shared include file for the GPU kernel
+    exec(open('atgpu/genheader.py').read())
+    cuda_path = os.environ.get('CUDA_PATH', None)
+    cuda_macros = [('CUDA', None)]
+    if cuda_path is None:
+        raise RuntimeError('CUDA_PATH environment variable not defined')
+    if sys.platform.startswith('win'):
+        cuda_cppflags = ['-I' + cuda_path + '\\include']
+        cuda_lflags = ['/LIBPATH:'+cuda_path+'\\lib\\x64', "cuda.lib", "nvrtc.lib"]
+    else:
+        cuda_cppflags = ['-I' + cuda_path + '/include']
+        cuda_lflags = ['-L' + cuda_path + '/lib64', '-Wl,-rpath,' + cuda_path + '/lib64', '-lcuda', '-lnvrtc']
+
+opencl = eval(os.environ.get('OPENCL', 'None'))
+if not opencl:
+    opencl_cppflags = []
+    opencl_lflags = []
+    opencl_macros = []
+else:
+    # Generate the shared include file for the GPU kernel
+    exec(open('atgpu/genheader.py').read())
+    opencl_ocl_path = os.environ.get('OCL_PATH', None)
+    opencl_macros = [('OPENCL', None)]
+    if sys.platform.startswith('win'):
+        # Static link
+        if opencl_ocl_path is None:
+            raise RuntimeError('OCL_PATH environment variable not defined')
+        opencl_cppflags = ['-I' + opencl_ocl_path + '\\include']
+        opencl_lflags = ['/LIBPATH:'+opencl_ocl_path+'\\lib', "OpenCL.lib","cfgmgr32.lib","runtimeobject.lib","Advapi32.lib","ole32.lib"]
+    elif sys.platform.startswith('darwin'):
+        opencl_cppflags = ["-std=c++11"]
+        opencl_lflags = ['-Wl,-framework,OpenCL']
+    else:
+        if opencl_ocl_path is not None:
+            # Private install
+            opencl_cppflags = ['-I' + opencl_ocl_path + '/include']
+            opencl_lflags = ['-L' + opencl_ocl_path + '/lib', '-Wl,-rpath,' + opencl_ocl_path + '/lib', '-lOpenCL']
+        elif exists('/usr/include/CL/opencl.h'):
+            # Standard install
+            opencl_cppflags = []
+            opencl_lflags = ['-lOpenCL']
+        else:
+            raise RuntimeError('Install OpenCL include and driver (ICD) in standard path or set OCL_PATH environment variable')
+
 if not sys.platform.startswith('win32'):
     cflags += ['-Wno-unused-function']
 
@@ -94,6 +147,7 @@ diffmatrix_orig = join('atmat', 'atphysics', 'Radiation')
 
 c_pass_methods = glob.glob(join(integrator_src_orig, '*Pass.c'))
 cpp_pass_methods = glob.glob(join(integrator_src_orig, '*Pass.cc'))
+gpu_pass_methods = glob.glob(join('atgpu', '*Pass.cpp'))
 diffmatrix_source = join(diffmatrix_orig, 'findmpoleraddiffmatrix.c')
 at_source = join('pyat', 'at.c')
 
@@ -136,7 +190,7 @@ at = Extension(
 cconfig = Extension(
     'at.cconfig',
     sources=[join('pyat', 'at', 'cconfig.c')],
-    define_macros=macros + omp_macros + mpi_macros,
+    define_macros=macros + omp_macros + mpi_macros + cuda_macros + opencl_macros,
     extra_compile_args=cflags + omp_cflags,
 )
 
@@ -148,8 +202,35 @@ diffmatrix = Extension(
     extra_compile_args=cflags
 )
 
+gpusource = (gpu_pass_methods +
+           [join('atgpu', 'AbstractGPU.cpp'),
+            join('atgpu', 'AbstractInterface.cpp'),
+            join('atgpu', 'PyInterface.cpp'),
+            join('atgpu', 'Lattice.cpp'),
+            join('atgpu', 'PassMethodFactory.cpp'),
+            join('atgpu', 'SymplecticIntegrator.cpp')])
+
+cudaext = Extension(
+    name='at.tracking.gpu',
+    sources=gpusource + [join('atgpu', 'CudaGPU.cpp')],
+    define_macros=macros + cuda_macros,
+    extra_compile_args=cppflags + cuda_cppflags,
+    extra_link_args=cuda_lflags
+)
+
+openclext = Extension(
+    name='at.tracking.gpu',
+    sources=gpusource + [join('atgpu', 'OpenCLGPU.cpp')],
+    define_macros=macros + opencl_macros,
+    include_dirs=[numpy.get_include()],
+    extra_compile_args=cppflags + opencl_cppflags,
+    extra_link_args=opencl_lflags
+)
+
 setup(
     ext_modules=[at, cconfig, diffmatrix] +
+                ([cudaext] if cuda else []) +
+                ([openclext] if opencl else []) +
                 [c_integrator_ext(pm) for pm in c_pass_methods] +
                 [cpp_integrator_ext(pm) for pm in cpp_pass_methods],
 )
