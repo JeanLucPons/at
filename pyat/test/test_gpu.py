@@ -1,7 +1,30 @@
-from at.tracking import gpu_info
+import at
+import machine_data
+import sys
+if sys.version_info.minor < 9:
+    from importlib_resources import files, as_file
+else:
+    from importlib.resources import files, as_file
 
-gpuList = gpu_info()
+def hmba_lattice():
+    with as_file(files(machine_data) / 'hmba.mat') as path:
+        ring = at.load_lattice(path)
+    return ring
+import numpy as np
+
+# Retrieve GPUs
+gpuList = at.tracking.gpu_info()
 nbGPU = len(gpuList)
+if nbGPU == 0:
+	sys.exit("No GPU found")
+
+# Display GPU info	
 print(f"{nbGPU} GPU detected")
 for g in gpuList:
 	print(g)
+
+# Perfrom a test
+ring = hmba_lattice()
+rin = np.array([0.001,0.0,0.001,0.0,0.0,0.0])
+rout, *_ = ring.track(rin,nturns=1,use_gpu=True,gpu_pool=[0])
+print(rout)
