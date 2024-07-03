@@ -2,7 +2,7 @@
 # variety of Python version
 # https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Build Python extension and run tests
+name: Build Python extension and Test GPU
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.12']
-        os: [ubuntu-latest]
+        os: [macos-latest, ubuntu-latest]
 
     steps:
 
@@ -29,8 +29,8 @@ jobs:
         cache: pip
 
     - name: Build and install at with tests
-      run: python -m pip install -e ".[dev]"
+      run: python -m pip install --config-settings opencl=1 -e ".[dev]"
 
-    - name: Test with pytest and coverage
+    - name: Test GPU
       working-directory: pyat
       run: python test/test_gpu.py
