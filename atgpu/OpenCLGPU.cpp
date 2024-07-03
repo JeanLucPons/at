@@ -140,6 +140,7 @@ void OpenCLContext::compile(string& code) {
 
     size_t logSize;
     clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, 0, nullptr, &logSize);
+    std::cout << "logSize =" << logSize << std::endl;
     char *log = new char[logSize+1];
     clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, logSize + 1, log, nullptr);
     std::cout << log << '\n';
