@@ -28,6 +28,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: pip
 
+    - name: Install OpenCL
+      run: sudo apt-get install -y ocl-icd-opencl-dev
+           sudo apt-get install -y pocl-opencl-icd
+  
     - name: Build and install at with tests
       run: python -m pip install --config-settings opencl=1 -e ".[dev]"
 
