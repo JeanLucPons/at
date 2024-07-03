@@ -138,15 +138,14 @@ void OpenCLContext::compile(string& code) {
 
     AbstractGPU::outputCode(code);
 
-    size_t logSize;
+    size_t logSize = 0;
     clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, 0, nullptr, &logSize);
-    std::cout << "logSize =" << logSize << std::endl;
-    char *log = new char[logSize+1];
-    std::cout << "Step #1" << '\n';
-    clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, logSize + 1, log, nullptr);
-    std::cout << "Step #2" << '\n';
-    std::cout << log << '\n';
-    delete[] log;
+    if( logSize>0 ) {
+      char *log = (char *)malloc(logSize + 1);
+      clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, logSize + 1, log, nullptr);
+      std::cout << log << '\n';
+      free(log);
+    }
 
     clReleaseProgram(program);
     program = nullptr;
