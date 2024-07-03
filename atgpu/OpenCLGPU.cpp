@@ -133,6 +133,8 @@ void OpenCLContext::compile(string& code) {
   const char *opts = OPTIONS;
   err = clBuildProgram(program, 1, &device_id, opts, nullptr, nullptr);
   if(err < 0) {
+  
+    std::cout << "clBuildProgram() error: " << err << std::endl;
 
     AbstractGPU::outputCode(code);
 
