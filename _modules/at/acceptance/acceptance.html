@@ -400,6 +400,7 @@ document.write(`
         <span class="n">offset</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">grid_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GridMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">GridMode</span><span class="o">.</span><span class="n">RADIAL</span><span class="p">,</span>
         <span class="n">use_mp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">use_gpu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">divider</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
         <span class="n">shift_zero</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0e-6</span><span class="p">,</span>
@@ -437,6 +438,7 @@ document.write(`
 <span class="sd">          * :py:attr:`.GridMode.RECURSIVE`: radial recursive search</span>
 <span class="sd">        use_mp:         Use python multiprocessing (:py:func:`.patpass`,</span>
 <span class="sd">          default use :py:func:`.lattice_pass`).</span>
+<span class="sd">        use_gpu:        Use GPU</span>
 <span class="sd">        verbose:        Print out some information</span>
 <span class="sd">        divider:        Value of the divider used in</span>
 <span class="sd">          :py:attr:`.GridMode.RECURSIVE` boundary search</span>
@@ -483,6 +485,10 @@ document.write(`
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Multi-process acceptance calculation selected...&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nproc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Consider use_mp=False for single core computations&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">use_gpu</span><span class="p">:</span>
+            <span class="n">nprocu</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GPU acceptance calculation selected...&#39;</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;use_gpu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">nprocu</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Single process acceptance calculation selected...&#39;</span><span class="p">)</span>

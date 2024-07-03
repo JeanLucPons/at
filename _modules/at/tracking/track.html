@@ -382,17 +382,22 @@ document.write(`
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">initialize_lpass</span><span class="p">,</span> <span class="n">disable_varelem</span><span class="p">,</span> <span class="n">variable_refs</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">End</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">get_uint32_index</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">random</span>
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
 <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
 <span class="kn">from</span> <span class="nn">.atpass</span> <span class="kn">import</span> <span class="n">reset_rng</span>
+<span class="kn">from</span> <span class="nn">..cconfig</span> <span class="kn">import</span> <span class="n">iscuda</span>
+<span class="kn">from</span> <span class="nn">..cconfig</span> <span class="kn">import</span> <span class="n">isopencl</span>
 
+<span class="k">if</span> <span class="n">iscuda</span><span class="p">()</span> <span class="ow">or</span> <span class="n">isopencl</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">.gpu</span> <span class="kn">import</span> <span class="n">gpupass</span> <span class="k">as</span> <span class="n">_gpupass</span>
+    <span class="kn">from</span> <span class="nn">.gpu</span> <span class="kn">import</span> <span class="n">gpuinfo</span> <span class="k">as</span> <span class="n">_gpuinfo</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lattice_track&#39;</span><span class="p">,</span> <span class="s1">&#39;element_track&#39;</span><span class="p">,</span> <span class="s1">&#39;internal_lpass&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;internal_epass&#39;</span><span class="p">,</span> <span class="s1">&#39;internal_plpass&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;internal_epass&#39;</span><span class="p">,</span> <span class="s1">&#39;internal_plpass&#39;</span><span class="p">,</span> <span class="s1">&#39;gpu_info&#39;</span><span class="p">]</span>
 
 <span class="n">_imax</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
 <span class="n">_globring</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Element</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -448,7 +453,14 @@ document.write(`
         <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">variable_refs</span><span class="p">(</span><span class="n">lattice</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;reuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">refs</span> <span class="o">=</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_atpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">use_gpu</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;use_gpu&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">use_gpu</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">iscuda</span><span class="p">()</span> <span class="ow">or</span> <span class="n">isopencl</span><span class="p">()):</span>
+            <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s2">&quot;No GPU support enabled&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_gpupass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_atpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
 <span class="nd">@fortran_align</span>
@@ -520,6 +532,8 @@ document.write(`
 <span class="sd">          *use_mp* is :py:obj:`True`. If None, ``min(npart,nproc)``</span>
 <span class="sd">          is used. It can be globally set using the variable</span>
 <span class="sd">          *at.lattice.DConstant.patpass_poolsize*</span>
+<span class="sd">        use_gpu (bool): Flag to activate GPU processing (default: False)</span>
+<span class="sd">	gpu_pool: List of GPU to use (default [0])</span>
 <span class="sd">        start_method:           python multiprocessing start method.</span>
 <span class="sd">          :py:obj:`None` uses the python default that is considered safe.</span>
 <span class="sd">          Available values: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>
@@ -697,7 +711,25 @@ document.write(`
     <span class="n">rout</span> <span class="o">=</span> <span class="n">_element_pass</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rout</span></div>
 
-    
+
+<div class="viewcode-block" id="gpu_info">
+<a class="viewcode-back" href="../../../p/api/at.tracking.track.html#at.tracking.track.gpu_info">[docs]</a>
+<span class="k">def</span> <span class="nf">gpu_info</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :py:func:`gpu_info` returns list of GPU present on the system and their corresponding information. If GPU</span>
+<span class="sd">    support is not enabled or if no capable device are present on the system, an empty list is returned.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        gpu: [gpu name,hardware version (CUDA device),compute unit number,platform]. The number of compute</span>
+<span class="sd">        units is not the so-called number of &quot;CUDA cores&quot;. The number of threads that can be executed simultaneously</span>
+<span class="sd">        depends on the hardware and on the type of used instructions. For best performance, it is recommended to</span>
+<span class="sd">        track a number of particles which is multiple of 64 (or 128) times the number of compute units.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">iscuda</span><span class="p">()</span> <span class="ow">or</span> <span class="n">isopencl</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">_gpuinfo</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
 
 <span class="n">internal_lpass</span> <span class="o">=</span> <span class="n">_lattice_pass</span>
 <span class="n">internal_epass</span> <span class="o">=</span> <span class="n">_element_pass</span>

@@ -591,6 +591,62 @@ to a <a class="reference external" href="https://www.mpi-forum.org/docs/">MPI</a
 </div>
 </section>
 </section>
+<section id="gpu-tracking">
+<h2><a class="reference internal" href="#gpu-tracking">GPU Tracking</a><a class="headerlink" href="#gpu-tracking" title="Link to this heading">#</a></h2>
+<p>PyAT can be installed with GPU support, either <a class="reference external" href="https://github.com/KhronosGroup/OpenCL-Guide/tree/main">OpenCL</a> or
+<a class="reference external" href="https://developer.nvidia.com/cuda-toolkit">CUDA</a>, compatibility. GPU are especially interesting for tracking large
+number of particle. The performance of the tracking is mainly related to the GPU double precision arithmetic performance.</p>
+<section id="opencl-installation">
+<h3>OpenCL Installation<a class="headerlink" href="#opencl-installation" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/KhronosGroup/OpenCL-Guide/tree/main">OpenCL</a> and installable client driver (ICD) must be preliminary installed on the system using either linux packages or by
+building the <a class="reference external" href="https://github.com/KhronosGroup/OpenCL-SDK">OpenCL SDK</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">opencl</span><span class="o">-</span><span class="n">headers</span> <span class="n">ocl</span><span class="o">-</span><span class="n">icd</span><span class="o">-</span><span class="n">opencl</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Then you need to set the environment variable <code class="docutils literal notranslate"><span class="pre">OCL_PATH</span></code> to the SDK install path if you don’t use a standard install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OCL_PATH</span><span class="o">=&lt;</span><span class="n">sdk_intall_path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or (on Windows):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">OCL_PATH</span><span class="o">=</span><span class="n">C</span><span class="p">:</span>\<span class="n">clpeak</span>\<span class="n">build</span>\<span class="n">sdk_instal</span>
+</pre></div>
+</div>
+<p>Note: <a class="reference external" href="https://github.com/krrishnarraj/clpeak">clpeak</a> is an OpenCL benchmarking tool that can be used to check system
+performance (especially double precision floating point arithmetic) and to build the OpenCL SDK.</p>
+<p>Install PyAT using the <code class="docutils literal notranslate"><span class="pre">opencl</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">at</span><span class="o">&gt;</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">settings</span> <span class="n">opencl</span><span class="o">=</span><span class="mi">1</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>You can check the install as bellow, without GPU support, the method <code class="docutils literal notranslate"><span class="pre">at.tracking.gpu_info()</span></code> will return an empty list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="p">:</span>\<span class="n">at</span><span class="o">&gt;</span><span class="n">python</span>
+<span class="n">Python</span> <span class="mf">3.11.5</span> <span class="p">(</span><span class="n">tags</span><span class="o">/</span><span class="n">v3</span><span class="mf">.11.5</span><span class="p">:</span><span class="n">cce6ba9</span><span class="p">,</span> <span class="n">Aug</span> <span class="mi">24</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">34</span><span class="p">)</span> <span class="p">[</span><span class="n">MSC</span> <span class="n">v</span><span class="mf">.1936</span> <span class="mi">64</span> <span class="n">bit</span> <span class="p">(</span><span class="n">AMD64</span><span class="p">)]</span> <span class="n">on</span> <span class="n">win32</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">at</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">at</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">gpu_info</span><span class="p">()</span>
+<span class="p">[[</span><span class="s1">&#39;NVIDIA GeForce GTX 1050 Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;6.1&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;NVIDIA CUDA OpenCL 3.0 CUDA 12.3.68&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Intel(R) UHD Graphics 630&#39;</span><span class="p">,</span> <span class="s1">&#39;0.0&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="s1">&#39;Intel(R) OpenCL HD Graphics OpenCL 3.0 &#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
+<section id="cuda-installation">
+<h3>CUDA Installation<a class="headerlink" href="#cuda-installation" title="Link to this heading">#</a></h3>
+<p>NVidia <a class="reference external" href="https://developer.nvidia.com/cuda-toolkit">CUDA</a> toolkit must be preliminary installed on the system from <a class="reference external" href="https://developer.nvidia.com/cuda-downloads">NVidia</a>.
+Set the environment variable <code class="docutils literal notranslate"><span class="pre">CUDA_PATH</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CUDA_PATH</span><span class="o">=/</span><span class="n">cvmfs</span><span class="o">/</span><span class="n">hpc</span><span class="o">.</span><span class="n">esrf</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">ubuntu20</span><span class="mf">.04</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="mf">12.3.1</span>
+</pre></div>
+</div>
+<p>or on Windows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">CUDA_PATH</span><span class="o">=</span><span class="n">C</span><span class="p">:</span>\<span class="n">Program</span> <span class="n">Files</span>\<span class="n">NVIDIA</span> <span class="n">GPU</span> <span class="n">Computing</span> <span class="n">Toolkit</span>\<span class="n">CUDA</span>\<span class="n">v12</span><span class="mf">.3</span>
+</pre></div>
+</div>
+<p>Install PyAT using the <code class="docutils literal notranslate"><span class="pre">cuda</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">settings</span> <span class="n">cuda</span><span class="o">=</span><span class="mi">1</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>You can check the install using the method <code class="docutils literal notranslate"><span class="pre">at.tracking.gpu_info()</span></code> as described above.</p>
+</section>
+</section>
 </section>
 
 
@@ -647,6 +703,11 @@ to a <a class="reference external" href="https://www.mpi-forum.org/docs/">MPI</a
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">MPI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Installation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-tracking">GPU Tracking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opencl-installation">OpenCL Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuda-installation">CUDA Installation</a></li>
 </ul>
 </li>
 </ul>
