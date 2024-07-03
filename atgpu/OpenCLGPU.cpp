@@ -142,7 +142,9 @@ void OpenCLContext::compile(string& code) {
     clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, 0, nullptr, &logSize);
     std::cout << "logSize =" << logSize << std::endl;
     char *log = new char[logSize+1];
+    std::cout << "Step #1" << '\n';
     clGetProgramBuildInfo(program, device_id, CL_PROGRAM_BUILD_LOG, logSize + 1, log, nullptr);
+    std::cout << "Step #2" << '\n';
     std::cout << log << '\n';
     delete[] log;
 
