@@ -11,14 +11,14 @@ jobs:
   build_and_run_tests:
 
     runs-on: ${{ matrix.os }}
-    container: intel/intel-gpu-initcontainer:devel
+#    container: intel/intel-gpu-initcontainer:devel
     timeout-minutes: 15
 
     strategy:
       matrix:
         python-version: ['3.12']
 #        os: [macos-latest, ubuntu-latest]
-        os: [ubuntu-latest]
+        os: [macos-latest]
 
     steps:
 
@@ -30,10 +30,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: pip
 
-    - name: Install OpenCL
-      run: |
-        sudo apt-get install -y ocl-icd-opencl-dev
-        sudo apt-get install -y pocl-opencl-icd
+#    - name: Install OpenCL
+#      run: |
+#        sudo apt-get install -y ocl-icd-opencl-dev
+#        sudo apt-get install -y pocl-opencl-icd
 
 #    - name: Install AMD drviers
 #      run: |
