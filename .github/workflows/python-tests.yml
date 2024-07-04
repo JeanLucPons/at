@@ -11,14 +11,14 @@ jobs:
   build_and_run_tests:
 
     runs-on: ${{ matrix.os }}
-    container: streamhpc/opencl-sdk-intelcpu:ubuntu-18.04-20220127
+    container: intel/intel-gpu-plugin:devel
     timeout-minutes: 15
 
     strategy:
       matrix:
         python-version: ['3.12']
 #        os: [macos-latest, ubuntu-latest]
-        os: [ubuntu-18.04]
+        os: [ubuntu-latest]
 
     steps:
 
