@@ -14,7 +14,10 @@ import numpy as np
 
 
 # Perfrom a test
-ring = hmba_lattice()
-rin = np.array([0.001,0.0,0.001,0.0,0.0,0.0])
-rout, *_ = ring.track(rin,nturns=1,use_gpu=True,gpu_pool=[0])
-print(rout)
+try:
+    ring = hmba_lattice()
+    rin = np.array([0.001,0.0,0.001,0.0,0.0,0.0])
+    rout, *_ = ring.track(rin,nturns=1,use_gpu=True,gpu_pool=[4])
+    print(rout)
+except Exception as e:
+    print(e)
