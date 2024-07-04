@@ -90,6 +90,7 @@ OpenCLContext::OpenCLContext(OCL_GPU_INFO *gpu)  {
 
   program = nullptr;
   kernel = nullptr;
+  mapkernel = nullptr;
 
 }
 
