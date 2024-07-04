@@ -35,14 +35,14 @@ jobs:
         sudo apt-get install -y pocl-opencl-icd
 	
     - name: Install AMD drviers
-      run: |
+      run: sudo apt install amdgpu-dkms rocm
         #sudo apt update
         #sudo apt install "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
-        #sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups
+        #sudo usermod -a -G render,video $LOGNAME
         #wget https://repo.radeon.com/amdgpu-install/6.1.2/ubuntu/jammy/amdgpu-install_6.1.60102-1_all.deb
         #sudo apt install ./amdgpu-install_6.1.60102-1_all.deb
         #sudo apt update
-        sudo apt install amdgpu-dkms rocm
+        #sudo apt install amdgpu-dkms rocm
   
     - name: Build and install at with tests
       run: python -m pip install --config-settings opencl=1 -e ".[dev]"
