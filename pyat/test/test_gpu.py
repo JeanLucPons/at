@@ -17,7 +17,7 @@ import numpy as np
 try:
     ring = hmba_lattice()
     rin = np.array([0.001,0.0,0.001,0.0,0.0,0.0])
-    rout, *_ = ring.track(rin,nturns=1,use_gpu=True,gpu_pool=[4])
+    rout, *_ = ring.track(rin,nturns=1,use_gpu=True,gpu_pool=[0])
     print(rout)
 except Exception as e:
     print(e)
