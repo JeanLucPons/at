@@ -33,7 +33,7 @@ jobs:
       run: |
         sudo apt-get install -y ocl-icd-opencl-dev
         sudo apt-get install -y pocl-opencl-icd
-	
+
     - name: Install AMD drviers
       run: sudo apt install amdgpu-dkms rocm
         #sudo apt update
